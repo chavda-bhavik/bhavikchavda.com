@@ -1,7 +1,11 @@
 {
     "name": "bhavikchavda.com",
-    "author": "chavda-bhavik",
+    "author": "chavda-bhavik <bhavikvchavda@gmail.com>",
     "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/chavda-bhavik/bhavikchavda.com.git"
+    },
     "scripts": {
         "dev": "next",
         "build": "next build",
@@ -9,6 +13,7 @@
         "type-check": "tsc"
     },
     "dependencies": {
+        "@notionhq/client": "^0.2.2",
         "next": "latest",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
