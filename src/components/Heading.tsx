@@ -4,7 +4,7 @@ import { Icon } from './Icon';
 
 interface HeadingProps {
     icon: IconsType;
-    title: string;
+    title?: string;
 }
 
 export const Heading: React.FC<HeadingProps> = ({ icon, title }) => {
@@ -16,7 +16,7 @@ export const Heading: React.FC<HeadingProps> = ({ icon, title }) => {
                 fill="black"
                 size="lg"
             />
-            <h2 className="text-lg uppercase tracking-widest">{title}</h2>
+            {title && <h2 className="text-lg uppercase tracking-widest">{title}</h2>}
         </div>
     );
 };
