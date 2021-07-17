@@ -1,4 +1,4 @@
-export type IconsType = 'user' | 'thunder';
+export type IconsType = 'user' | 'thunder' | 'writings';
 
 export type IconsSizesType = 'sm' | 'md' | 'lg';
 

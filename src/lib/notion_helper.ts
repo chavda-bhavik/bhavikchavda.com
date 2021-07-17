@@ -14,7 +14,7 @@ export const asTitle = (propertyValue: PropertyValue) =>
     (propertyValue as TitlePropertyValue)?.title || '';
 
 export const asRichText = (propertyValue: PropertyValue) =>
-    (propertyValue as RichTextPropertyValue)?.rich_text[0].plain_text || '';
+    (propertyValue as RichTextPropertyValue)?.rich_text[0]?.plain_text || '';
 
 export const asUrl = (propertyValue: PropertyValue) =>
     (propertyValue as URLPropertyValue)?.url || '';

@@ -47,7 +47,7 @@ export async function getPosts() {
         return posts;
     } catch (error) {
         console.log(error);
-        return undefined;
+        return [];
     }
 }
 
@@ -61,7 +61,6 @@ export async function getProjects() {
                     direction: 'descending',
                 },
             ],
-            page_size: 1,
         });
         let projects = results.map(({ properties, id }) => {
             return {
@@ -80,6 +79,6 @@ export async function getProjects() {
         return projects;
     } catch (error) {
         console.log(error);
-        return undefined;
+        return [];
     }
 }

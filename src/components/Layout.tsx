@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Layout = ({ children, title = 'This is the default title', className = '' }: Props) => (
-    <div className="container max-w-2xl mx-auto bg-gray-500 px-2">
+    <div className="container max-w-2xl mx-auto px-2">
         <Head>
             <title>{title}</title>
             <meta charSet="utf-8" />
@@ -19,13 +19,13 @@ const Layout = ({ children, title = 'This is the default title', className = '' 
         <header className="flex flex-row justify-between items-center py-2">
             <nav className="flex flex-row space-x-2 items-center">
                 <Image src="/the-avatar.jpeg" height={50} width={50} className="rounded-full" />
-                <Link href="/">
+                <Link href="/projects">
                     <a>Projects</a>
                 </Link>
-                <Link href="/about">
-                    <a>Posts</a>
+                <Link href="/writings">
+                    <a>Writings</a>
                 </Link>
-                <Link href="/users">
+                <Link href="/about">
                     <a>About</a>
                 </Link>
             </nav>
