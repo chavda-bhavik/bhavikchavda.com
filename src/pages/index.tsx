@@ -58,8 +58,8 @@ const IndexPage = ({ posts, projects }: IndexPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const posts = await getPosts();
-    const projects = await getProjects();
+    const posts = await getPosts(3);
+    const projects = await getProjects(3);
     return {
         props: {
             posts,

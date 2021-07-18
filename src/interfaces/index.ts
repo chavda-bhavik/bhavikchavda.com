@@ -1,4 +1,4 @@
-export type IconsType = 'user' | 'thunder' | 'writings' | 'smiley';
+export type IconsType = 'user' | 'thunder' | 'writings' | 'smiley' | 'highlighter' | 'externalLink';
 
 export type IconsSizesType = 'sm' | 'md' | 'lg';
 
@@ -13,6 +13,7 @@ export type PostType = {
     fileUrl: string;
     heading: string;
     publishDate: string;
+    imageUrl: string;
     tags: TagType[];
 };
 
@@ -23,5 +24,15 @@ export type ProjectType = {
     githubURL: string;
     heading: string;
     isLive: boolean;
+    tags: TagType[];
+};
+
+export type ArticleType = {
+    id: string;
+    date: string;
+    description: string;
+    blogURL: string;
+    heading: string;
+    imageURL: string;
     tags: TagType[];
 };
