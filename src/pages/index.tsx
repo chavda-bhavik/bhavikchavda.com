@@ -40,7 +40,7 @@ const IndexPage = ({ posts, projects }: IndexPageProps) => {
 
             {/* Projects */}
             <Heading icon="thunder" title="Projects" />
-            <div className="divide-y-2 divide-solid mb-10">
+            <div className="space-y-1 mb-10">
                 {projects.map((project) => (
                     <Project key={project.id} project={project} />
                 ))}

@@ -9,13 +9,15 @@ interface ProjectProps {
 
 export const Project: React.FC<ProjectProps> = ({ project }) => {
     return (
-        <div className="px-2 py-5 cursor-pointer hover:bg-gray-400 ease-in-out transition-colors group hover:shadow-lg rounded-md">
-            <p className="text-xl mb-2 group-hover:text-white">{project.heading}</p>
-            <p className="text-base mb-2 group-hover:text-gray-50">{project.description}</p>
-            <div className="flex flex-row space-x-2">
-                {project.tags.map((tag) => (
-                    <Tag text={tag.name} key={tag.name} />
-                ))}
+        <div className="h-full w-full group cursor-pointer self-stretch">
+            <div className="p-2 h-full w-full flex flex-col bg-classy-base transition-all transform ease-in-out rounded-md hover:-translate-y-1 group-hover:shadow-lg border-2 border-transparent group-hover:border-classy-dark">
+                <p className="tracking-normal mb-2 font-semibold text-2xl">{project.heading}</p>
+                <p className="text-base mb-6 text-gray-800 flex-1">{project.description}</p>
+                <div className="flex flex-row flex-wrap">
+                    {project.tags.map((tag) => (
+                        <Tag text={tag.name} key={tag.name} />
+                    ))}
+                </div>
             </div>
         </div>
     );
