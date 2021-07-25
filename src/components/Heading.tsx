@@ -18,12 +18,7 @@ export const Heading: React.FC<HeadingProps> = ({
     variant = 'heading',
 }) => {
     let iconContent = (
-        <Icon
-            icon={icon}
-            className="bg-classy-dark p-2 rounded-full mx-2"
-            fill="#E3F2FF"
-            size="lg"
-        />
+        <Icon icon={icon} className="bg-classy-dark text-white p-2 rounded-full mx-2" size="lg" />
     );
     let descriptionContent = (
         <div className={`px-1 py-2 ${className}`}>

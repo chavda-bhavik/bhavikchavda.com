@@ -25,7 +25,7 @@ const NavItems = [
 
 export const Footer: React.FC<FooterProps> = ({}) => {
     return (
-        <div className="bg-classy-base border-t-2 border-classy-dark pt-16">
+        <div className="bg-classy-base border-t-2 border-classy-dark pt-16 mt-16">
             <div className="container px-4">
                 <h1 className="text-3xl font-semibold text-center">Hii</h1>
                 <p className="text-sm md:text-base text-center mt-2">
@@ -120,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                                 title="View LinkedIn Profile"
                             >
                                 <Icon
-                                    icon="linkedIn"
+                                    icon="linkedInCircle"
                                     className="transition-transform transform ease-in-out hover:-translate-y-1 w-6 h-6 hover:text-classy-gray"
                                 />
                             </a>

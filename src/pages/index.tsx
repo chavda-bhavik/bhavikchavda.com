@@ -26,7 +26,7 @@ const IndexPage = ({ posts, projects }: IndexPageProps) => {
 
             {/* About */}
             <Heading icon="user" title="About" />
-            <ul className="px-2 my-5 list-disc list-inside mb-10">
+            <ul className="list-disc list-inside mt-3 mb-10">
                 <li>
                     Currently working as web developer at{' '}
                     <a href="#">La Net Team Software Solution</a>. Making web better with NodeJS and
@@ -40,15 +40,15 @@ const IndexPage = ({ posts, projects }: IndexPageProps) => {
 
             {/* Projects */}
             <Heading icon="thunder" title="Projects" />
-            <div className="space-y-1 mb-10">
+            <div className="space-y-1 mt-3 mb-10">
                 {projects.map((project) => (
                     <Project key={project.id} project={project} />
                 ))}
             </div>
 
             {/* Writings */}
-            <Heading icon="writings" title="Writings" />
-            <div className="divide-y-2 divide-solid mb-10">
+            <Heading icon="linkedIn" title="LinkedIn Posts" />
+            <div className="space-y-1 mt-3 mb-10">
                 {posts.map((post) => (
                     <Post key={post.id} post={post} />
                 ))}

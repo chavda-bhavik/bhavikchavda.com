@@ -7,6 +7,7 @@ export type IconsType =
     | 'externalLink'
     | 'github'
     | 'linkedIn'
+    | 'linkedInCircle'
     | 'email'
     | 'twitter'
     | 'inbox';

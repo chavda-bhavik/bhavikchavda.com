@@ -6,4 +6,19 @@
     .link {
         @apply hover:underline cursor-pointer font-medium transition-all tracking-wide;
     }
+    .hover-lift-up {
+        @apply transform hover:-translate-y-1;
+    }
+    .card-highlight {
+        @apply border-2 border-transparent transition-all ease-in-out bg-classy-base hover:border-classy-dark group-hover:shadow-lg;
+    }
+    .card {
+        @apply group px-2 py-5 rounded-md hover-lift-up cursor-pointer card-highlight;
+    }
+    .card-heading {
+        @apply tracking-normal mb-2 font-semibold text-2xl;
+    }
+    .card-description {
+        @apply text-base text-gray-800 mb-2;
+    }
 }

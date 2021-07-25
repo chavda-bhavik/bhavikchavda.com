@@ -15,15 +15,27 @@ interface WritingsProps {
 const Writings = ({ posts, articles }: WritingsProps) => {
     return (
         <Layout title="Bhavik Chavda | Writings">
-            <Heading icon="highlighter" title="Recent Posts" />
-            <div className="divide-y-2 divide-solid mb-10">
+            <Heading
+                icon="linkedIn"
+                title="LinkedIn Posts"
+                variant="description"
+                className="mt-10"
+                description="I share usefull posts on LinkedIn"
+            />
+            <div className="space-y-2 mt-3 mb-10">
                 {posts.map((post) => (
                     <Post post={post} key={post.id} />
                 ))}
             </div>
 
-            <Heading icon="writings" title="Recent Articles" />
-            <div className="container w-100 mx-auto space-y-2">
+            <Heading
+                icon="writings"
+                title="Recent Articles"
+                variant="description"
+                className="mt-10"
+                description="I sometimes writes blogs too"
+            />
+            <div className="mx-auto space-y-2 mt-3 mb-10">
                 {articles.map((article) => (
                     <Article article={article} key={article.id} />
                 ))}
