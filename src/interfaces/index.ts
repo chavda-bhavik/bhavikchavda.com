@@ -1,4 +1,15 @@
-export type IconsType = 'user' | 'thunder' | 'writings' | 'smiley' | 'highlighter' | 'externalLink';
+export type IconsType =
+    | 'user'
+    | 'thunder'
+    | 'writings'
+    | 'smiley'
+    | 'highlighter'
+    | 'externalLink'
+    | 'github'
+    | 'linkedIn'
+    | 'email'
+    | 'twitter'
+    | 'inbox';
 
 export type IconsSizesType = 'sm' | 'md' | 'lg';
 
