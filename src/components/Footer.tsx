@@ -75,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                         >
                             © 2020 - 2021 Bhavik Chavda. All Rights Reserved.
                         </span>
-                        <div className="flex flex-row space-x-2 items-center">
+                        <div className="flex flex-row space-x-2 justify-center md:justify-end">
                             <a
                                 target="_blank"
                                 rel="noreferrer noopener"

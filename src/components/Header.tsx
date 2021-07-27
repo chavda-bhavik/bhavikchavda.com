@@ -27,14 +27,14 @@ export const Header: React.FC<HeaderProps> = ({}) => {
             {/* Other then mobile */}
             <div className="hidden sm:flex w-full flex-row justify-between items-center pl-2">
                 <div className="flex-row space-x-2 flex">
-                    <Menus className="hover:text-classy-dark text-base text-classy-medium" />
+                    <Menus className="hover:text-classy-dark font-medium text-lg text-classy-dark hover:underline" />
                 </div>
                 <input type="radio" name="dark" />
             </div>
 
             {/* For mobile */}
             <div className="flex sm:hidden w-full flex-row justify-between items-center pl-2">
-                <span className="font-medium text-xl text-classy-medium">bhavikchavda.com</span>
+                <span className="font-medium text-xl text-classy-dark">bhavikchavda.com</span>
                 <button onClick={() => setToggleMenu(true)}>
                     <Icon icon="toggler" size="md" />
                 </button>
