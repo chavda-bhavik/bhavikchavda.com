@@ -85,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                             >
                                 <Icon
                                     icon="inbox"
-                                    className="h-6 w-6 transition-transform transform ease-in-out hover:-translate-y-1 hover:text-classy-medium"
+                                    className="h-6 w-6 transition-transform hover-lift-up ease-in-out hover:text-classy-medium"
                                 />
                             </a>
                             <a
@@ -97,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                             >
                                 <Icon
                                     icon="github"
-                                    className="transition-transform transform ease-in-out hover:-translate-y-1 w-6 h-6 hover:text-classy-gray"
+                                    className="w-6 h-6 transition-transform hover-lift-up ease-in-out hover:text-classy-gray"
                                 />
                             </a>
                             <a
@@ -109,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                             >
                                 <Icon
                                     icon="twitter"
-                                    className="transition-transform transform ease-in-out hover:-translate-y-1 w-6 h-6 hover:text-classy-gray"
+                                    className="w-6 h-6 transition-transform hover-lift-up ease-in-out hover:text-classy-gray"
                                 />
                             </a>
                             <a
@@ -121,7 +121,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                             >
                                 <Icon
                                     icon="linkedInCircle"
-                                    className="transition-transform transform ease-in-out hover:-translate-y-1 w-6 h-6 hover:text-classy-gray"
+                                    className="w-6 h-6 transition-transform hover-lift-up ease-in-out hover:text-classy-gray"
                                 />
                             </a>
                         </div>

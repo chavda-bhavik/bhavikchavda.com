@@ -10,7 +10,11 @@ export type IconsType =
     | 'linkedInCircle'
     | 'email'
     | 'twitter'
-    | 'inbox';
+    | 'inbox'
+    | 'toggler'
+    | 'sun'
+    | 'moon'
+    | 'close';
 
 export type IconsSizesType = 'sm' | 'md' | 'lg';
 
