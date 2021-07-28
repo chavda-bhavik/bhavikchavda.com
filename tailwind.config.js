@@ -15,6 +15,19 @@ module.exports = {
                     gray: '#AEBCB9',
                 },
             },
+            animation: {
+                'blob-spin': 'blobbing 25s linear infinite',
+            },
+            keyframes: {
+                blobbing: {
+                    from: {
+                        transform: 'rotate(0deg)',
+                    },
+                    to: {
+                        transform: 'rotate(360deg)',
+                    },
+                },
+            },
         },
     },
     variants: {},

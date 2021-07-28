@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Backdrop } from './Backdrop';
 import { Icon } from './Icon';
 import { Menus } from './Menus';
+import Avatar from '../assets/the-avatar.jpeg';
 
 interface HeaderProps {}
 
@@ -16,9 +17,11 @@ export const Header: React.FC<HeaderProps> = ({}) => {
             <Link href="/">
                 <a>
                     <Image
-                        src="/the-avatar.jpeg"
+                        src={Avatar}
                         height={60}
                         width={60}
+                        priority={true}
+                        placeholder="blur"
                         className="rounded-full cursor-pointer"
                     />
                 </a>

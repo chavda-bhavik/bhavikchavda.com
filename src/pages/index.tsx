@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { GetStaticProps } from 'next';
 
 import Layout from '@/components/Layout';
@@ -7,6 +6,7 @@ import { getPosts, getProjects } from '@/lib/notion';
 import { PostType, ProjectType } from '@/interfaces';
 import { Post } from '@/components/Post';
 import { Project } from '@/components/Project';
+import { Highlight } from '@/components/Highlight';
 
 interface IndexPageProps {
     posts: PostType[];
@@ -16,13 +16,7 @@ interface IndexPageProps {
 const IndexPage = ({ posts, projects }: IndexPageProps) => {
     return (
         <Layout title="Bhavik Chavda | Full Stack Web Developer">
-            <div className="flex flex-row h-full items-center my-40">
-                <h1 className="font-serif text-3xl w-9/12">
-                    Hey, I'm Bhavik. Full Stack Web Developer with keen focus on Web Performance and
-                    User Experience.
-                </h1>
-                <Image src="/the-avatar.jpeg" className="rounded-full" height={150} width={150} />
-            </div>
+            <Highlight />
 
             {/* About */}
             <Heading icon="user" title="About" />
