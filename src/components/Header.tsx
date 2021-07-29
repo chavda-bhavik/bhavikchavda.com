@@ -18,8 +18,8 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                 <a>
                     <Image
                         src={Avatar}
-                        height={60}
-                        width={60}
+                        height={55}
+                        width={55}
                         priority={true}
                         placeholder="blur"
                         className="rounded-full cursor-pointer"
@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
 
             {/* Other then mobile */}
             <div className="hidden sm:flex w-full flex-row justify-between items-center pl-2">
-                <div className="flex-row space-x-2 flex">
+                <div className="flex-row space-x-2 lg:space-x-3 flex">
                     <Menus className="hover:text-classy-dark font-medium text-lg text-classy-dark hover:underline" />
                 </div>
                 <input type="radio" name="dark" />

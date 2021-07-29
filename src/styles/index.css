@@ -6,6 +6,9 @@
     .link {
         @apply hover:underline cursor-pointer font-medium transition-all tracking-wide;
     }
+    .about-title {
+        @apply font-bold text-2xl mt-6 mb-3;
+    }
     .hover-lift-up {
         @apply transform hover:-translate-y-1;
     }

@@ -3,9 +3,9 @@ import Layout from '@/components/Layout';
 
 const AboutPage = () => (
     <Layout title="Bhavik Chavda | About">
-        <Heading icon="smiley" />
+        <Heading icon="smiley" className="mt-7 mb-5" />
 
-        <h2 className="font-bold text-3xl mb-2">About Me</h2>
+        <h2 className="about-title">About Me</h2>
         <p>
             I'm Bhavik Chavda. I'm currently working as Software Developer in{' '}
             <a href="">LaNet Team Software Solutions</a>. I code in Javascript, Typescript, NodeJS
@@ -14,7 +14,7 @@ const AboutPage = () => (
             <a href="">here</a>.
         </p>
 
-        <h2 className="font-bold text-3xl mt-6 mb-2">Skills</h2>
+        <h2 className="about-title">Skills</h2>
         <ul className="list-disc list-inside">
             <li>Node JS, Apollo GraphQL, Prisma</li>
             <li>React/Preact, Redux, GatsBy, NextJS</li>
@@ -23,7 +23,7 @@ const AboutPage = () => (
             <li>SCSS / CSS, Tailwind, Bootstrap, Styled Components</li>
         </ul>
 
-        <h2 className="font-bold text-3xl mt-6 mb-2">Education</h2>
+        <h2 className="about-title">Education</h2>
         <div>
             <p className="text-lg font-medium">Master of Science in Information Technology</p>
             <p className="text-base">
@@ -31,7 +31,7 @@ const AboutPage = () => (
             </p>
         </div>
 
-        <h2 className="font-bold text-3xl mt-6 mb-2">Hobbies</h2>
+        <h2 className="about-title">Hobbies</h2>
         <ul className="list-disc list-inside">
             <li>Reading Books</li>
             <li>Create Posts</li>

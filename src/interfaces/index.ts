@@ -14,7 +14,8 @@ export type IconsType =
     | 'toggler'
     | 'sun'
     | 'moon'
-    | 'close';
+    | 'close'
+    | 'joyStick';
 
 export type IconsSizesType = 'sm' | 'md' | 'lg';
 

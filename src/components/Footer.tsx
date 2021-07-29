@@ -48,6 +48,9 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                 </p>
                 <div className="flex items-center justify-center mt-4">
                     <a
+                        href="mailto:bhavikvchavda@gmail.com"
+                        target="_blank"
+                        rel="noopener norefferer"
                         className="py-2 px-5 sm:px-10 md:px-20 bg-classy-dark border-transparent border-2 hover:border-classy-dark hover:bg-classy-light hover:text-classy-dark text-white transition-all duration-[0.5s] rounded-md 
                      bg-left hover:bg-right cursor-pointer bg-200"
                     >
@@ -115,7 +118,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                             <a
                                 target="_blank"
                                 rel="noreferrer noopener"
-                                href="https://linkedin.com/heybhavik"
+                                href="https://www.linkedin.com/in/heybhavik/"
                                 aria-label="View LinkedIn Profile"
                                 title="View LinkedIn Profile"
                             >

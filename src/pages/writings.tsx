@@ -19,7 +19,7 @@ const Writings = ({ posts, articles }: WritingsProps) => {
                 icon="linkedIn"
                 title="LinkedIn Posts"
                 variant="description"
-                className="mt-10"
+                className="mt-7 mb-5"
                 description="I share usefull posts on LinkedIn"
             />
             <div className="space-y-2 mt-3 mb-10">

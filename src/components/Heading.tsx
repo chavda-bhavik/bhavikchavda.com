@@ -30,7 +30,7 @@ export const Heading: React.FC<HeadingProps> = ({
         </div>
     );
     let headingContent = (
-        <div className="flex flex-row items-center px-1 py-2">
+        <div className={`flex flex-row items-center px-1 py-2 ${className}`}>
             {iconContent}
             {title && <h2 className="text-xl font-medium uppercase tracking-wide">{title}</h2>}
         </div>

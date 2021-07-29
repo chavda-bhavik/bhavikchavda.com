@@ -15,9 +15,9 @@ const Projects = ({ projects }: ProjectsProps) => {
     return (
         <Layout title="Bhavik Chavda | Project">
             <Heading
-                icon="thunder"
+                icon="joyStick"
                 title="Projects"
-                className="mt-6 mb-4"
+                className="mt-7 mb-5"
                 variant="description"
                 description="Full Stack Web development Pet Projects"
             />
