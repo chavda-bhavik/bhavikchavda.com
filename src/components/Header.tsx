@@ -4,12 +4,36 @@ import Image from 'next/image';
 
 import { Backdrop } from './Backdrop';
 import { Icon } from './Icon';
-import { Menus } from './Menus';
+import { NavLink } from './NavLink';
 import Avatar from '../assets/the-avatar.jpeg';
+import classNames from 'classnames';
+import { useRouter } from 'next/dist/client/router';
+
+export const menuItems = [
+    {
+        title: 'Home',
+        link: '/',
+        exact: true,
+    },
+    {
+        title: 'Projects',
+        link: '/projects',
+    },
+    {
+        title: 'Writings',
+        link: '/writings',
+    },
+    {
+        title: 'About',
+        link: '/about',
+    },
+];
 
 interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = ({}) => {
+    const router = useRouter();
+    let selected;
     const [toggleMenu, setToggleMenu] = useState(false);
 
     return (
@@ -30,7 +54,25 @@ export const Header: React.FC<HeaderProps> = ({}) => {
             {/* Other then mobile */}
             <div className="hidden sm:flex w-full flex-row justify-between items-center pl-2">
                 <div className="flex-row space-x-2 lg:space-x-3 flex">
-                    <Menus className="hover:text-classy-dark font-medium text-lg text-classy-dark hover:underline" />
+                    {menuItems.map((menu) => {
+                        selected = menu.exact
+                            ? router.asPath === menu.link
+                            : router.asPath.startsWith(menu.link);
+                        return (
+                            <NavLink
+                                className={classNames(
+                                    'hover:text-classy-dark font-medium text-lg transition-colors',
+                                    {
+                                        'text-classy-medium': !selected,
+                                        'text-classy-dark': selected,
+                                    }
+                                )}
+                                link={menu.link}
+                                title={menu.title}
+                                key={menu.title}
+                            />
+                        );
+                    })}
                 </div>
                 <input type="radio" name="dark" />
             </div>
@@ -47,8 +89,25 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                     className="bg-gray-50"
                 >
                     <div className="flex flex-col items-center w-full h-full my-auto">
-                        <Menus className="text-xl text-classy-dark my-5" />
-                        {/* <Icon icon="sun" className="my-5" /> */}
+                        {menuItems.map((menu) => {
+                            selected = menu.exact
+                                ? router.asPath === menu.link
+                                : router.asPath.startsWith(menu.link);
+                            return (
+                                <NavLink
+                                    className={classNames(
+                                        'hover:text-classy-dark font-medium text-xl transition-colors my-5',
+                                        {
+                                            'text-classy-medium': !selected,
+                                            'text-classy-dark': selected,
+                                        }
+                                    )}
+                                    link={menu.link}
+                                    title={menu.title}
+                                    key={menu.title}
+                                />
+                            );
+                        })}
                     </div>
                 </Backdrop>
             </div>
