@@ -6,6 +6,7 @@ import { getArticles, getPosts } from '@/lib/notion';
 import { ArticleType, PostType } from '@/interfaces';
 import { Post } from '@/components/Post';
 import { Article } from '@/components/Article';
+import { SEO } from '@/components/seo';
 
 interface WritingsProps {
     posts: PostType[];
@@ -14,7 +15,8 @@ interface WritingsProps {
 
 const Writings = ({ posts, articles }: WritingsProps) => {
     return (
-        <Layout title="Bhavik Chavda | Writings">
+        <Layout>
+            <SEO title="Writings" description="Articles and Content written by bhavik chavda" />
             <Heading
                 icon="linkedIn"
                 title="LinkedIn Posts"

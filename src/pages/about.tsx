@@ -1,8 +1,11 @@
 import { Heading } from '@/components/Heading';
 import Layout from '@/components/Layout';
+import { SEO } from '@/components/seo';
 
 const AboutPage = () => (
-    <Layout title="Bhavik Chavda | About">
+    <Layout>
+        <SEO title="About" description="About Bhavik Chavda" />
+
         <Heading icon="smiley" className="mt-7 mb-5" />
 
         <h2 className="about-title">About Me</h2>

@@ -7,6 +7,7 @@ import { PostType, ProjectType } from '@/interfaces';
 import { Post } from '@/components/Post';
 import { Project } from '@/components/Project';
 import { Highlight } from '@/components/Highlight';
+import { SEO } from '@/components/seo';
 
 interface IndexPageProps {
     posts: PostType[];
@@ -15,7 +16,8 @@ interface IndexPageProps {
 
 const IndexPage = ({ posts, projects }: IndexPageProps) => {
     return (
-        <Layout title="Bhavik Chavda | Full Stack Web Developer">
+        <Layout>
+            <SEO title="Home" />
             <Highlight />
 
             {/* About */}

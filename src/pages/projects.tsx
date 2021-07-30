@@ -6,6 +6,7 @@ import { getProjects } from '@/lib/notion';
 import { ProjectType } from '@/interfaces';
 import { Heading } from '@/components/Heading';
 import { Project } from '@/components/Project';
+import { SEO } from '@/components/seo';
 
 interface ProjectsProps {
     projects: ProjectType[];
@@ -13,7 +14,8 @@ interface ProjectsProps {
 
 const Projects = ({ projects }: ProjectsProps) => {
     return (
-        <Layout title="Bhavik Chavda | Project">
+        <Layout>
+            <SEO title="Projects" description="projects created by bhavik chavda" />
             <Heading
                 icon="joyStick"
                 title="Projects"
