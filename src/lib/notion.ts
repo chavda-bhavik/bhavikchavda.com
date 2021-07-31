@@ -46,6 +46,7 @@ export async function getPosts(limit?: number) {
                     color: tag.color,
                     name: tag.name,
                 })),
+                linkedInURL: Helper.asUrl(properties.LinkedInURL),
                 imageUrl: Helper.asUrl(properties.ImageURL),
             } as PostType;
         });
@@ -77,6 +78,7 @@ export async function getProjects(limit?: number) {
                 githubURL: Helper.asUrl(properties.GithubURL),
                 heading: Helper.asRichText(properties.Heading),
                 isLive: Helper.asCheckbox(properties.IsLive),
+                liveURL: Helper.asUrl(properties.LiveURL),
                 tags: Helper.asMultiSelect(properties.Tags).multi_select.map((tag) => ({
                     color: tag.color,
                     name: tag.name,

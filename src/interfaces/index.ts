@@ -15,7 +15,9 @@ export type IconsType =
     | 'sun'
     | 'moon'
     | 'close'
-    | 'joyStick';
+    | 'joyStick'
+    | 'world'
+    | 'code';
 
 export type IconsSizesType = 'sm' | 'md' | 'lg';
 
@@ -31,6 +33,7 @@ export type PostType = {
     heading: string;
     publishDate: string;
     imageUrl: string;
+    linkedInURL: string;
     tags: TagType[];
 };
 
@@ -41,6 +44,7 @@ export type ProjectType = {
     githubURL: string;
     heading: string;
     isLive: boolean;
+    liveURL: string;
     tags: TagType[];
 };
 

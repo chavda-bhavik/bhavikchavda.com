@@ -22,7 +22,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                 title="Projects"
                 className="mt-7 mb-5"
                 variant="description"
-                description="Full Stack Web development Pet Projects"
+                description="Web Development side Projects"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-3 gap-2">
                 {projects.map((project) => (

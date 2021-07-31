@@ -21,7 +21,7 @@ const Writings = ({ posts, articles }: WritingsProps) => {
                 title="LinkedIn Posts"
                 variant="description"
                 className="mt-7 mb-5"
-                description="I share usefull posts on LinkedIn"
+                description="Recent Posts on LinkedIn"
             />
             <div className="space-y-2 mt-3 mb-10">
                 {posts.map((post) => (
@@ -34,7 +34,7 @@ const Writings = ({ posts, articles }: WritingsProps) => {
                 title="Recent Articles"
                 variant="description"
                 className="mt-10"
-                description="I sometimes writes blogs too"
+                description="Recent written articles"
             />
             <div className="mx-auto space-y-2 mt-3 mb-10">
                 {articles.map((article) => (

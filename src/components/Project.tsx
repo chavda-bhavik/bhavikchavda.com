@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { ProjectType } from '@/interfaces';
-import { Tag } from './Tag';
+import { Tag } from '@/components/Tag';
+import { NavLink } from '@/components/NavLink';
 
 interface ProjectProps {
     project: ProjectType;
@@ -9,7 +10,11 @@ interface ProjectProps {
 
 export const Project: React.FC<ProjectProps> = ({ project }) => {
     return (
-        <div className="h-full w-full group cursor-pointer self-stretch">
+        <NavLink
+            link={project.isLive ? project.liveURL : project.githubURL}
+            type="external"
+            className="h-full w-full block group cursor-pointer self-stretch"
+        >
             <div className="p-2 h-full w-full card">
                 <h3 className="card-heading">{project.heading}</h3>
                 <h4 className="card-description flex-1">{project.description}</h4>
@@ -19,6 +24,6 @@ export const Project: React.FC<ProjectProps> = ({ project }) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </NavLink>
     );
 };

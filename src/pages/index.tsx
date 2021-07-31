@@ -26,16 +26,16 @@ const IndexPage = ({ posts, projects }: IndexPageProps) => {
             <Heading icon="user" title="About" />
             <ul className="list-disc list-inside mt-3 mb-10">
                 <li>
-                    Currently working as web developer at{' '}
+                    Currently working as full stack web developer at{' '}
                     <NavLink className="link" link={links.lanetTeam} type="external">
                         LaNet Team Software Solutions
                     </NavLink>
-                    . Making web better with NodeJS and ReactJS.
+                    . Crafting beautiful websites and building features that solves users problems.
                 </li>
                 <li>
-                    Pursuded degree of Master of Science in Information Technology from{' '}
+                    Studied Master of Science in Information Technology from{' '}
                     <NavLink className="link" link={links.jpdawer} type="external">
-                        J.P.Dawer Insitute of Communication Technology
+                        J.P.Dawer Insitute of Communication and Technology
                     </NavLink>
                     .
                 </li>
