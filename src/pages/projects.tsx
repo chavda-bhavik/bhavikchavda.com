@@ -1,7 +1,8 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 
-import Layout from '@/components/Layout';
+import { Fragment } from 'react';
+
 import { getProjects } from '@/lib/notion';
 import { ProjectType } from '@/interfaces';
 import { Heading } from '@/components/Heading';
@@ -14,7 +15,7 @@ interface ProjectsProps {
 
 const Projects = ({ projects }: ProjectsProps) => {
     return (
-        <Layout>
+        <Fragment>
             <SEO title="Projects" description="projects created by bhavik chavda" />
             <Heading
                 icon="joyStick"
@@ -28,7 +29,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                     <Project project={project} key={project.id} />
                 ))}
             </div>
-        </Layout>
+        </Fragment>
     );
 };
 

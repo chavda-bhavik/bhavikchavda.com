@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames';
 import { useRouter } from 'next/dist/client/router';
@@ -16,16 +16,20 @@ export const Header: React.FC<HeaderProps> = ({}) => {
     let selected;
     const [toggleMenu, setToggleMenu] = useState(false);
 
+    useEffect(() => {
+        setToggleMenu(false);
+    }, [router.asPath]);
+
     return (
-        <header className="flex flex-row py-2 px-2">
-            <NavLink link="/" type="internal">
+        <header className="flex flex-row py-4 px-2">
+            <NavLink link="/" type="internal" className="flex items-center">
                 <Image
                     src={Avatar}
-                    height={50}
-                    width={50}
+                    height={45}
+                    width={45}
                     priority={true}
                     placeholder="blur"
-                    className="rounded-full cursor-pointer"
+                    className="rounded-full cursor-pointer my-auto"
                 />
             </NavLink>
 
@@ -85,7 +89,9 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                                     link={menu.link}
                                     title={menu.title}
                                     key={menu.title}
-                                />
+                                >
+                                    {menu.title}
+                                </NavLink>
                             );
                         })}
                     </div>

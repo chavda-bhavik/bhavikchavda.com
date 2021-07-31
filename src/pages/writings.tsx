@@ -1,6 +1,5 @@
-import React from 'react';
+import { Fragment } from 'react';
 
-import Layout from '@/components/Layout';
 import { Heading } from '@/components/Heading';
 import { getArticles, getPosts } from '@/lib/notion';
 import { ArticleType, PostType } from '@/interfaces';
@@ -15,7 +14,7 @@ interface WritingsProps {
 
 const Writings = ({ posts, articles }: WritingsProps) => {
     return (
-        <Layout>
+        <Fragment>
             <SEO title="Writings" description="Articles and Content written by bhavik chavda" />
             <Heading
                 icon="linkedIn"
@@ -42,7 +41,7 @@ const Writings = ({ posts, articles }: WritingsProps) => {
                     <Article article={article} key={article.id} />
                 ))}
             </div>
-        </Layout>
+        </Fragment>
     );
 };
 

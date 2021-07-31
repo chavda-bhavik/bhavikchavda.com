@@ -1,11 +1,12 @@
+import { Fragment } from 'react';
+
 import { Heading } from '@/components/Heading';
-import Layout from '@/components/Layout';
 import { SEO } from '@/components/seo';
 import { NavLink } from '@/components/NavLink';
 import { links } from '@/config/constants';
 
 const AboutPage = () => (
-    <Layout>
+    <Fragment>
         <SEO title="About" description="About Bhavik Chavda" />
 
         <Heading icon="smiley" className="mt-7 mb-5" />
@@ -61,7 +62,7 @@ const AboutPage = () => (
             <li>Create Posts</li>
             <li>Excercise</li>
         </ul>
-    </Layout>
+    </Fragment>
 );
 
 export default AboutPage;

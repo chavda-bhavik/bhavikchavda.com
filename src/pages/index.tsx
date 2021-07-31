@@ -1,6 +1,6 @@
+import { Fragment } from 'react';
 import { GetStaticProps } from 'next';
 
-import Layout from '@/components/Layout';
 import { Heading } from '@/components/Heading';
 import { getPosts, getProjects } from '@/lib/notion';
 import { PostType, ProjectType } from '@/interfaces';
@@ -18,7 +18,7 @@ interface IndexPageProps {
 
 const IndexPage = ({ posts, projects }: IndexPageProps) => {
     return (
-        <Layout>
+        <Fragment>
             <SEO title="Home" />
             <Highlight />
 
@@ -56,7 +56,7 @@ const IndexPage = ({ posts, projects }: IndexPageProps) => {
                     <Post key={post.id} post={post} />
                 ))}
             </div>
-        </Layout>
+        </Fragment>
     );
 };
 
