@@ -8,6 +8,8 @@ import { Post } from '@/components/Post';
 import { Project } from '@/components/Project';
 import { Highlight } from '@/components/Highlight';
 import { SEO } from '@/components/seo';
+import { links } from '@/config/constants';
+import { NavLink } from '@/components/NavLink';
 
 interface IndexPageProps {
     posts: PostType[];
@@ -25,12 +27,17 @@ const IndexPage = ({ posts, projects }: IndexPageProps) => {
             <ul className="list-disc list-inside mt-3 mb-10">
                 <li>
                     Currently working as web developer at{' '}
-                    <a href="#">La Net Team Software Solution</a>. Making web better with NodeJS and
-                    ReactJS.
+                    <NavLink className="link" link={links.lanetTeam} type="external">
+                        LaNet Team Software Solutions
+                    </NavLink>
+                    . Making web better with NodeJS and ReactJS.
                 </li>
                 <li>
-                    Pursuded degree of Master of Science in Information Technology from J.P.Dawer
-                    Institute of Technology.
+                    Pursuded degree of Master of Science in Information Technology from{' '}
+                    <NavLink className="link" link={links.jpdawer} type="external">
+                        J.P.Dawer Insitute of Communication Technology
+                    </NavLink>
+                    .
                 </li>
             </ul>
 

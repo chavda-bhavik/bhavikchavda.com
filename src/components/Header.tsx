@@ -1,33 +1,13 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-
-import { Backdrop } from './Backdrop';
-import { Icon } from './Icon';
-import { NavLink } from './NavLink';
-import Avatar from '../assets/the-avatar.jpeg';
 import classNames from 'classnames';
 import { useRouter } from 'next/dist/client/router';
 
-export const menuItems = [
-    {
-        title: 'Home',
-        link: '/',
-        exact: true,
-    },
-    {
-        title: 'Projects',
-        link: '/projects',
-    },
-    {
-        title: 'Writings',
-        link: '/writings',
-    },
-    {
-        title: 'About',
-        link: '/about',
-    },
-];
+import Avatar from '../assets/the-avatar.jpeg';
+import { Backdrop } from './Backdrop';
+import { Icon } from './Icon';
+import { NavLink } from './NavLink';
+import { MenuItems } from '@/config/constants';
 
 interface HeaderProps {}
 
@@ -38,23 +18,21 @@ export const Header: React.FC<HeaderProps> = ({}) => {
 
     return (
         <header className="flex flex-row py-2 px-2">
-            <Link href="/">
-                <a>
-                    <Image
-                        src={Avatar}
-                        height={55}
-                        width={55}
-                        priority={true}
-                        placeholder="blur"
-                        className="rounded-full cursor-pointer"
-                    />
-                </a>
-            </Link>
+            <NavLink link="/" type="internal">
+                <Image
+                    src={Avatar}
+                    height={50}
+                    width={50}
+                    priority={true}
+                    placeholder="blur"
+                    className="rounded-full cursor-pointer"
+                />
+            </NavLink>
 
             {/* Other then mobile */}
-            <div className="hidden sm:flex w-full flex-row justify-between items-center pl-2">
+            <div className="hidden sm:flex w-full flex-row items-center pl-2">
                 <div className="flex-row space-x-2 lg:space-x-3 flex">
-                    {menuItems.map((menu) => {
+                    {MenuItems.map((menu) => {
                         selected = menu.exact
                             ? router.asPath === menu.link
                             : router.asPath.startsWith(menu.link);
@@ -67,14 +45,16 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                                         'text-classy-dark': selected,
                                     }
                                 )}
+                                type="internal"
                                 link={menu.link}
                                 title={menu.title}
                                 key={menu.title}
-                            />
+                            >
+                                {menu.title}
+                            </NavLink>
                         );
                     })}
                 </div>
-                <input type="radio" name="dark" />
             </div>
 
             {/* For mobile */}
@@ -89,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                     className="bg-gray-50"
                 >
                     <div className="flex flex-col items-center w-full h-full my-auto">
-                        {menuItems.map((menu) => {
+                        {MenuItems.map((menu) => {
                             selected = menu.exact
                                 ? router.asPath === menu.link
                                 : router.asPath.startsWith(menu.link);

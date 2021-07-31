@@ -1,27 +1,10 @@
 import React from 'react';
 
 import { Icon } from './Icon';
+import { NavLink } from './NavLink';
+import { links, MenuItems } from '@/config/constants';
 
 interface FooterProps {}
-
-const NavItems = [
-    {
-        title: 'Home',
-        href: '/',
-    },
-    {
-        title: 'Projects',
-        href: '/projects',
-    },
-    {
-        title: 'Writings',
-        href: '/writings',
-    },
-    {
-        title: 'About',
-        href: '/about',
-    },
-];
 
 export const Footer: React.FC<FooterProps> = ({}) => {
     return (
@@ -33,42 +16,49 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                 </p>
                 <p className="text-sm md:text-base text-center mt-1">
                     you can find me on{' '}
-                    <a href="" className="text-blue-500 link">
+                    <NavLink
+                        type="external"
+                        className="link"
+                        link={links.linkedIn}
+                        title="LinkedIn"
+                    >
                         LinkedIn
-                    </a>
+                    </NavLink>
                     ,{' '}
-                    <a href="" className="text-blue-500 link">
+                    <NavLink type="external" className="link" link={links.github} title="Github">
                         Github
-                    </a>
+                    </NavLink>
                     , and{' '}
-                    <a href="" className="text-blue-500 link">
+                    <NavLink type="external" className="link" link={links.twitter} title="Twitter">
                         Twitter
-                    </a>
+                    </NavLink>
                     .
                 </p>
                 <div className="flex items-center justify-center mt-4">
-                    <a
-                        href="mailto:bhavikvchavda@gmail.com"
-                        target="_blank"
-                        rel="noopener norefferer"
+                    <NavLink
+                        title="mail bhavikvchavda@gmail.com"
+                        link={links.mailto}
+                        type="external"
                         className="py-2 px-5 sm:px-10 md:px-20 bg-classy-dark border-transparent border-2 hover:border-classy-dark hover:bg-classy-light hover:text-classy-dark text-white transition-all duration-[0.5s] rounded-md 
                      bg-left hover:bg-right cursor-pointer bg-200"
                     >
                         <span className="text-2xl font-semibold">Say Hello 👋</span>
-                    </a>
+                    </NavLink>
                 </div>
             </div>
             <footer className="relative w-full h-56">
                 <div className="container h-full px-5 pt-24 pb-12 m-auto max-w-3xl">
                     <nav className="float-right space-x-3 mb-5 justify-center md:justify-end hidden md:flex flex-row">
-                        {NavItems.map((item, i) => (
-                            <a
+                        {MenuItems.map((item, i) => (
+                            <NavLink
                                 key={i}
-                                href={item.href}
+                                type="internal"
+                                link={item.link}
                                 className="link text-classy-dark uppercase font-medium"
+                                title={item.title}
                             >
                                 {item.title}
-                            </a>
+                            </NavLink>
                         ))}
                     </nav>
                     <div className="container flex flex-col-reverse md:flex-row space-y-5 space-y-reverse md:space-y-0 justify-between">
@@ -79,54 +69,49 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                             © 2020 - 2021 Bhavik Chavda. All Rights Reserved.
                         </span>
                         <div className="flex flex-row space-x-2 justify-center md:justify-end">
-                            <a
-                                target="_blank"
-                                rel="noreferrer noopener"
-                                href="mailto:bhavikvchavda@gmail.com"
-                                aria-label="Email bhavikvchavda@gmail.com"
-                                title="Email"
+                            <NavLink
+                                type="external"
+                                link={links.mailto}
+                                ariaLabel="Email bhavikvchavda@gmail.com"
+                                title="email"
                             >
                                 <Icon
                                     icon="inbox"
                                     className="h-6 w-6 transition-transform hover-lift-up ease-in-out hover:text-classy-medium"
                                 />
-                            </a>
-                            <a
-                                target="_blank"
-                                rel="noreferrer noopener"
-                                href="https://github.com/chavda-bhavik"
-                                aria-label="View Github Profile"
-                                title="View Github Profile"
+                            </NavLink>
+                            <NavLink
+                                type="external"
+                                link={links.github}
+                                ariaLabel="View Github Profile"
+                                title="Github"
                             >
                                 <Icon
                                     icon="github"
                                     className="w-6 h-6 transition-transform hover-lift-up ease-in-out hover:text-classy-gray"
                                 />
-                            </a>
-                            <a
-                                target="_blank"
-                                rel="noreferrer noopener"
-                                href="https://twitter.com/heybhavik"
-                                aria-label="View Twitter Profile"
-                                title="View Twitter Profile"
+                            </NavLink>
+                            <NavLink
+                                type="external"
+                                link={links.twitter}
+                                ariaLabel="View Twitter Profile"
+                                title="Twitter"
                             >
                                 <Icon
                                     icon="twitter"
                                     className="w-6 h-6 transition-transform hover-lift-up ease-in-out hover:text-classy-gray"
                                 />
-                            </a>
-                            <a
-                                target="_blank"
-                                rel="noreferrer noopener"
-                                href="https://www.linkedin.com/in/heybhavik/"
-                                aria-label="View LinkedIn Profile"
-                                title="View LinkedIn Profile"
+                            </NavLink>
+                            <NavLink
+                                link={links.linkedIn}
+                                ariaLabel="View LinkedIn Profile"
+                                title="LinkedIn"
                             >
                                 <Icon
                                     icon="linkedInCircle"
                                     className="w-6 h-6 transition-transform hover-lift-up ease-in-out hover:text-classy-gray"
                                 />
-                            </a>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
