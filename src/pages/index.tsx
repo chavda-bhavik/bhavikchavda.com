@@ -1,3 +1,4 @@
+import React from 'react';
 import { Fragment } from 'react';
 import { GetStaticProps } from 'next';
 
@@ -18,7 +19,7 @@ interface IndexPageProps {
 
 const IndexPage = ({ posts, projects }: IndexPageProps) => {
     return (
-        <Fragment>
+        <>
             <SEO title="Home" />
             <Highlight />
 
@@ -56,7 +57,7 @@ const IndexPage = ({ posts, projects }: IndexPageProps) => {
                     <Post key={post.id} post={post} />
                 ))}
             </div>
-        </Fragment>
+        </>
     );
 };
 

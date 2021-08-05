@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { GetStaticProps } from 'next';
-
-import { Fragment } from 'react';
 
 import { getProjects } from '@/lib/notion';
 import { ProjectType } from '@/interfaces';
@@ -13,9 +11,9 @@ interface ProjectsProps {
     projects: ProjectType[];
 }
 
-const Projects = ({ projects }: ProjectsProps) => {
+const Projects = ({ projects }: ProjectsProps): ReactNode => {
     return (
-        <Fragment>
+        <>
             <SEO title="Projects" description="projects created by bhavik chavda" />
             <Heading
                 icon="joyStick"
@@ -29,12 +27,12 @@ const Projects = ({ projects }: ProjectsProps) => {
                     <Project project={project} key={project.id} />
                 ))}
             </div>
-        </Fragment>
+        </>
     );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    let projects = await getProjects();
+    const projects = await getProjects();
     return {
         props: {
             projects,

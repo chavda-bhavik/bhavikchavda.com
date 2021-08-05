@@ -1,5 +1,4 @@
-import { Fragment } from 'react';
-
+import React, { Fragment } from 'react';
 import { Heading } from '@/components/Heading';
 import { SEO } from '@/components/seo';
 import { NavLink } from '@/components/NavLink';
