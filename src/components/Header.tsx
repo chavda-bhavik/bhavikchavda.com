@@ -29,6 +29,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                     width={45}
                     priority={true}
                     placeholder="blur"
+                    alt="Avatar"
                     className="rounded-full cursor-pointer my-auto"
                 />
             </NavLink>

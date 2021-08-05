@@ -21,7 +21,7 @@ export const NavLink: React.FC<NavLinkProps> = ({
         <a
             href={link}
             target="_blank"
-            rel="noopener norefferer"
+            rel="noopener noreferrer"
             className={className}
             title={title}
             aria-label={ariaLabel}

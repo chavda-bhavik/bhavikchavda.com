@@ -24,8 +24,8 @@ export const Highlight: React.FC<HighlightProps> = ({}) => {
     return (
         <div className="flex flex-col-reverse md:flex-row h-full items-center my-32 justify-between space-y-reverse space-y-4 md:space-y-0">
             <h1 className="font-medium text-2xl md:text-2xl lg:text-3xl w-11/12 md:w-7/12">
-                Hey, I'm Bhavik. Full Stack Web Developer with keen focus on Web Performance and
-                User Experience.
+                Hey, I&apos;m Bhavik. Full Stack Web Developer with keen focus on Web Performance
+                and User Experience.
             </h1>
             <div className="relative">
                 <Blob />
@@ -39,6 +39,7 @@ export const Highlight: React.FC<HighlightProps> = ({}) => {
                             quality={100}
                             priority={true}
                             placeholder="blur"
+                            alt="Avatar"
                         />
                     </div>
                 </div>
