@@ -1,4 +1,4 @@
-import React, { Fragment, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import { Heading } from '@/components/Heading';
 import { getArticles, getPosts } from '@/lib/notion';
@@ -23,11 +23,15 @@ const Writings = ({ posts, articles }: WritingsProps): ReactNode => {
                 className="mt-7 mb-5"
                 description="Recent Posts on LinkedIn"
             />
-            <div className="space-y-2 mt-3 mb-10">
-                {posts.map((post) => (
-                    <Post post={post} key={post.id} />
-                ))}
-            </div>
+            <section className="text-gray-600">
+                <div className="container mx-auto">
+                    <div className="flex flex-wrap">
+                        {posts.map((post) => (
+                            <Post post={post} key={post.id} />
+                        ))}
+                    </div>
+                </div>
+            </section>
 
             <Heading
                 icon="writings"
@@ -46,7 +50,7 @@ const Writings = ({ posts, articles }: WritingsProps): ReactNode => {
 };
 
 export const getStaticProps = async () => {
-    const posts = await getPosts(4);
+    const posts = await getPosts(6);
     const articles = await getArticles(4);
     return {
         props: {

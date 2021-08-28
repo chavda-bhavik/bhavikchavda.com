@@ -9,7 +9,7 @@ module.exports = {
                     base: '#E6F4F1',
                     medium: '#7FB6AC',
                     dark: '#344B47',
-                    gray: '#ACBAD3',
+                    maroon: '#ACBAD3',
                 },
                 spot: {
                     gray: '#AEBCB9',

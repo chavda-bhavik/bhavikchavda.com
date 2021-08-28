@@ -9,7 +9,7 @@ type Props = {
 
 export const Layout = ({ children }: Props) => (
     <>
-        <div className="container max-w-3xl mx-auto">
+        <div className="container max-w-4xl mx-auto">
             {/* <Head>
                 <title>{title}</title>
                 <meta charSet="utf-8" />

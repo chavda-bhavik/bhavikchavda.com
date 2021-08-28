@@ -22,7 +22,7 @@ const Projects = ({ projects }: ProjectsProps): ReactNode => {
                 variant="description"
                 description="Web Development side Projects"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-3 gap-2">
+            <div className="space-y-2">
                 {projects.map((project) => (
                     <Project project={project} key={project.id} />
                 ))}
