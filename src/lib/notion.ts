@@ -1,5 +1,5 @@
 import { Client } from '@notionhq/client';
-import { ArticleType, PostType, ProjectType } from '@/interfaces';
+import { ArticleType, PostsReturnType, PostType, ProjectType } from '@/interfaces';
 import * as Helper from './notion_helper';
 import { DatabasesQueryParameters } from '@notionhq/client/build/src/api-endpoints';
 
@@ -12,7 +12,7 @@ const notion = new Client({
     auth: AuthID,
 });
 
-export async function getPosts(limit?: number) {
+export async function getPosts(limit?: number, start_cursor?: string): Promise<PostsReturnType> {
     try {
         let queryParams: DatabasesQueryParameters = {
             database_id: PostsDBId,
@@ -34,7 +34,8 @@ export async function getPosts(limit?: number) {
             ],
         };
         if (limit) queryParams.page_size = limit;
-        let { results } = await notion.databases.query(queryParams);
+        if (start_cursor) queryParams.start_cursor = start_cursor;
+        let { results, has_more, next_cursor } = await notion.databases.query(queryParams);
         let posts: PostType[] = results.map(({ id, properties }) => {
             return {
                 id,
@@ -48,12 +49,19 @@ export async function getPosts(limit?: number) {
                 })),
                 linkedInURL: Helper.asUrl(properties.LinkedInURL),
                 imageUrl: Helper.asUrl(properties.ImageURL),
+                category: Helper.asSelect(properties.Category).select.name
             } as PostType;
         });
-        return posts;
+        return {
+            posts,
+            has_more,
+            next_cursor
+        };
     } catch (error) {
-        console.log(error);
-        return [];
+        return {
+            posts: [],
+            has_more: false
+        };
     }
 }
 

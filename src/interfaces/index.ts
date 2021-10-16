@@ -17,7 +17,9 @@ export type IconsType =
     | 'close'
     | 'joyStick'
     | 'world'
-    | 'code';
+    | 'code'
+    | 'chevronCircleRightF'
+    | 'chevronCircleLeftF' | 'loader';
 
 export type IconsSizesType = 'sm' | 'md' | 'lg';
 
@@ -35,6 +37,7 @@ export type PostType = {
     imageUrl: string;
     linkedInURL: string;
     tags: TagType[];
+    category: string;
 };
 
 export type ProjectType = {
@@ -57,3 +60,9 @@ export type ArticleType = {
     imageURL: string;
     tags: TagType[];
 };
+
+export type PostsReturnType = {
+    posts?: PostType[],
+    has_more: boolean,
+    next_cursor?: string;
+}

@@ -9,8 +9,8 @@ export const defaultSeo = {
 };
 
 export const links = {
-    linkedIn: 'https://www.linkedin.com/in/heybhavik',
-    twitter: 'https://twitter.com/heybhavik',
+    linkedIn: 'https://www.linkedin.com/in/chavdabhavik7',
+    twitter: 'https://twitter.com/chavdabhavik7',
     github: 'https://github.com/chavda-bhavik',
     mailto: 'mailto:bhavikvchavda@gmail.com',
     lanetTeam: 'http://lanetteam.com/',
@@ -28,8 +28,8 @@ export const MenuItems = [
         link: '/projects',
     },
     {
-        title: 'Writings',
-        link: '/writings',
+        title: 'Content',
+        link: '/content',
     },
     {
         title: 'About',

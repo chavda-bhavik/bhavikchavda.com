@@ -30,6 +30,11 @@ module.exports = {
             },
         },
     },
-    variants: {},
+    variants: {
+        extend: {
+            backgroundColor: ['disabled'],
+            textColor: ['disabled'],
+        },
+    },
     plugins: [],
 };

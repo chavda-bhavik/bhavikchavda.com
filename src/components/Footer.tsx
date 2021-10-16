@@ -9,10 +9,10 @@ interface FooterProps {}
 export const Footer: React.FC<FooterProps> = ({}) => {
     return (
         <div className="bg-classy-base border-t-2 border-classy-dark pt-16 mt-16">
-            <div className="container px-4">
+            <div className="container px-4 mx-auto">
                 <h1 className="text-3xl font-semibold text-center">Hii</h1>
                 <p className="text-sm md:text-base text-center mt-2">
-                    Do you have any suggestions or feedbacks? Feel free to email me.
+                    Do you have any suggestions or feedbacks? Feel free to contact me.
                 </p>
                 <p className="text-sm md:text-base text-center mt-1">
                     you can find me on{' '}
@@ -39,8 +39,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                         title="mail bhavikvchavda@gmail.com"
                         link={links.mailto}
                         type="external"
-                        className="py-2 px-5 sm:px-10 md:px-20 bg-classy-dark border-transparent border-2 hover:border-classy-dark hover:bg-classy-light hover:text-classy-dark text-white transition-all duration-[0.5s] rounded-md 
-                     bg-left hover:bg-right cursor-pointer bg-200"
+                        className="btn btn-primary py-2 px-5 sm:px-10 md:px-20"
                     >
                         <span className="text-2xl font-semibold">Say Hello 👋</span>
                     </NavLink>

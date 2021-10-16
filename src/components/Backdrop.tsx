@@ -5,9 +5,16 @@ interface BackdropProps {
     onClose: () => void;
     show: boolean;
     className?: string;
+    iconClassName?: string;
 }
 
-export const Backdrop: React.FC<BackdropProps> = ({ show, onClose, children, className }) => {
+export const Backdrop: React.FC<BackdropProps> = ({
+    show,
+    onClose,
+    children,
+    className,
+    iconClassName,
+}) => {
     useEffect(() => {
         toggleBodyOverflowHidden(show);
     }, [show]);
@@ -30,7 +37,7 @@ export const Backdrop: React.FC<BackdropProps> = ({ show, onClose, children, cla
         >
             <div className={`min-h-screen h-full flex justify-center items-center`}>
                 <button className="z-30 absolute top-4 right-4" onClick={onClose}>
-                    <Icon icon={'close'} size="md" />
+                    <Icon icon={'close'} size="md" className={iconClassName} />
                 </button>
                 <div
                     className={`fixed inset-0 transition-opacity ${className}`}
