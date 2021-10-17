@@ -11,7 +11,7 @@ interface ProjectProps {
 export const Project: React.FC<ProjectProps> = ({ project }) => {
     return (
         <NavLink
-            link={project.isLive ? project.liveURL : project.githubURL}
+            link={project.redirectURL}
             type="external"
             className="rounded-lg border-2 bg-classy-base hover:border-classy-dark transition-colors duration-200 cursor-pointer block"
         >

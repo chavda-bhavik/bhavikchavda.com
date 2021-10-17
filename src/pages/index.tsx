@@ -20,8 +20,11 @@ interface IndexPageProps {
 }
 
 // dynamically (lazy) loading PDFViewer component
-const DynamicPDFViewer = dynamic(() =>
-    import('@/components/PDFViewer').then((mod) => mod.PDFViewer)
+const DynamicPDFViewer = dynamic<any>(
+    () => import('@/components/PDFViewer').then((mod) => mod.PDFViewer),
+    {
+        ssr: false,
+    }
 );
 
 const IndexPage = ({ posts, projects }: IndexPageProps) => {
@@ -34,7 +37,7 @@ const IndexPage = ({ posts, projects }: IndexPageProps) => {
     };
     const onPDFClose = () => {
         setShowPDF(false);
-        setSelectedPost(null);
+        setSelectedPost(undefined);
     };
 
     return (

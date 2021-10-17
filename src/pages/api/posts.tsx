@@ -8,6 +8,8 @@ export default async function getPostsAPI(req: NextApiRequest, res: NextApiRespo
         const postsData = await getPosts(6, start_cursor);
         res.status(200).json(postsData);
     } catch (error) {
-        res.status(500).send(error.message || 'Some error occurred while fetching posts');
+        res.status(500).send(
+            (error as Error).message || 'Some error occurred while fetching posts'
+        );
     }
 }
