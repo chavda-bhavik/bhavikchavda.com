@@ -2,7 +2,7 @@ export const defaultSeo = {
     title: 'Bhavik Chavda',
     description: 'Bhavik Chavda is a Full Stack Web Developer',
     author: 'Bhavik Chavda',
-    siteUrl: 'https://wwww.bhavikchavda.com',
+    siteUrl: 'https://www.bhavikchavda.com',
     image: '/og/default.png',
     twitterUserName: '@chavdabhavik7',
     linkedInUserName: '@chavdabhavik7',
