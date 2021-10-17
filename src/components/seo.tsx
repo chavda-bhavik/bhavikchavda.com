@@ -11,12 +11,10 @@ interface SEOProps {
 export const SEO: React.FC<SEOProps> = ({ title, description, image }) => {
     const {
         title: defaultTitle,
-        author,
         description: defaultDescription,
         image: defaultImage,
         siteUrl,
         twitterUserName,
-        linkedInUserName,
     } = defaultSeo;
 
     const seo = {

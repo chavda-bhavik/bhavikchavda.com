@@ -12,7 +12,7 @@ class MyDocument extends Document {
                     <Main />
                     <NextScript />
                     <script
-                        data-goatcounter="https://schoacher.goatcounter.com/count"
+                        data-goatcounter={`https://${process.env.NEXT_PUBLIC_GOAT_COUNTER_CODE}.goatcounter.com/count`}
                         async
                         src="//gc.zgo.at/count.js"
                     />
