@@ -1,5 +1,5 @@
-import React, { Fragment, ReactNode } from 'react';
-import { GetStaticProps } from 'next';
+import React, { ReactNode } from 'react';
+import { GetServerSideProps } from 'next';
 
 import { getProjects } from '@/lib/notion';
 import { ProjectType } from '@/interfaces';
@@ -31,7 +31,7 @@ const Projects = ({ projects }: ProjectsProps): ReactNode => {
     );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps<ProjectsProps> = async () => {
     const projects = await getProjects();
     return {
         props: {
