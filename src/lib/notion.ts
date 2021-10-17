@@ -1,7 +1,6 @@
 import { Client } from '@notionhq/client';
 import { ArticleType, PostsReturnType, PostType, ProjectType } from '@/interfaces';
-import * as Helper from './notion_helper';
-import { DatabasesQueryParameters } from '@notionhq/client/build/src/api-endpoints';
+import { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints';
 
 const PostsDBId = process.env.NOTION_POSTS_DBID;
 const ProjectsDBId = process.env.NOTION_PROJECTS_DBID;
@@ -14,8 +13,8 @@ const notion = new Client({
 
 export async function getPosts(limit?: number, start_cursor?: string): Promise<PostsReturnType> {
     try {
-        let queryParams: DatabasesQueryParameters = {
-            database_id: PostsDBId,
+        let queryParams: QueryDatabaseParameters = {
+            database_id: PostsDBId!,
             filter: {
                 and: [
                     {
@@ -39,17 +38,16 @@ export async function getPosts(limit?: number, start_cursor?: string): Promise<P
         let posts: PostType[] = results.map(({ id, properties }) => {
             return {
                 id,
-                description: Helper.asRichText(properties.Description),
-                fileUrl: Helper.asUrl(properties.File),
-                heading: Helper.asRichText(properties.Heading),
-                publishDate: Helper.asDate(properties.PublishDate),
-                tags: Helper.asMultiSelect(properties.Tags).multi_select.map((tag) => ({
+                description: properties.Description.type === "rich_text" ? properties.Description.rich_text[0].plain_text : '',
+                fileUrl: properties.File.type === "url" ? properties.File.url : '',
+                heading: properties.Heading.type === "rich_text" ? properties.Heading.rich_text[0].plain_text : '',
+                publishDate: properties.PublishDate.type === 'date' ? properties.PublishDate.date : '',
+                tags: properties.Tags.type === "multi_select" ? properties.Tags.multi_select.map(tag => ({
                     color: tag.color,
-                    name: tag.name,
-                })),
-                linkedInURL: Helper.asUrl(properties.LinkedInURL),
-                imageUrl: Helper.asUrl(properties.ImageURL),
-                category: Helper.asSelect(properties.Category).select.name
+                    name: tag.name
+                })) : [],
+                imageUrl: properties.ImageURL.type === "url" ? properties.ImageURL.url : '',
+                category: properties.Category.type === 'select' ? properties.Category.select.name : ''
             } as PostType;
         });
         return {
@@ -58,17 +56,19 @@ export async function getPosts(limit?: number, start_cursor?: string): Promise<P
             next_cursor
         };
     } catch (error) {
+        console.log(error);
         return {
             posts: [],
-            has_more: false
+            has_more: false,
+            next_cursor: null
         };
     }
 }
 
 export async function getProjects(limit?: number) {
     try {
-        let queryParams: DatabasesQueryParameters = {
-            database_id: ProjectsDBId,
+        let queryParams: QueryDatabaseParameters = {
+            database_id: ProjectsDBId!,
             sorts: [
                 {
                     property: 'Date',
@@ -81,16 +81,15 @@ export async function getProjects(limit?: number) {
         let projects = results.map(({ properties, id }) => {
             return {
                 id,
-                date: Helper.asDate(properties.Date),
-                description: Helper.asRichText(properties.Description),
-                githubURL: Helper.asUrl(properties.GithubURL),
-                heading: Helper.asRichText(properties.Heading),
-                isLive: Helper.asCheckbox(properties.IsLive),
-                liveURL: Helper.asUrl(properties.LiveURL),
-                tags: Helper.asMultiSelect(properties.Tags).multi_select.map((tag) => ({
+                date: properties.Date.type === 'date' ? properties.Date.date : '',
+                description: properties.Description.type === "rich_text" ? properties.Description.rich_text[0].plain_text : '',
+                githubURL: properties.GithubURL.type === "url" ? properties.GithubURL.url : '',
+                heading: properties.Heading.type === "rich_text" ? properties.Heading.rich_text[0].plain_text : '',
+                redirectURL: properties.RedirectURL.type === "url" ? properties.RedirectURL.url : '',
+                tags: properties.Tags.type === "multi_select" ? properties.Tags.multi_select.map(tag => ({
                     color: tag.color,
-                    name: tag.name,
-                })),
+                    name: tag.name
+                })) : []
             } as ProjectType;
         });
         return projects;
@@ -102,8 +101,8 @@ export async function getProjects(limit?: number) {
 
 export async function getArticles(limit?: number) {
     try {
-        let queryParams: DatabasesQueryParameters = {
-            database_id: ArticlesDBId,
+        let queryParams: QueryDatabaseParameters = {
+            database_id: ArticlesDBId!,
             filter: {
                 and: [
                     {
@@ -126,15 +125,15 @@ export async function getArticles(limit?: number) {
         let articles = results.map(({ properties, id }) => {
             return {
                 id,
-                date: Helper.asDate(properties.Date),
-                description: Helper.asRichText(properties.Description),
-                blogURL: Helper.asUrl(properties.BlogURL),
-                heading: Helper.asRichText(properties.Heading),
-                imageURL: Helper.asUrl(properties.ImageURL),
-                tags: Helper.asMultiSelect(properties.Tags).multi_select.map((tag) => ({
+                date: properties.Date.type === 'date' ? properties.Date.date.start : '',
+                description: properties.Description.type === "rich_text" ? properties.Description.rich_text[0].plain_text : '',
+                blogURL: properties.BlogURL.type === "url" ? properties.BlogURL.url : '',
+                heading: properties.Heading.type === "rich_text" ? properties.Heading.rich_text[0].plain_text : '',
+                imageURL: properties.ImageURL.type === "url" ? properties.ImageURL.url : '',
+                tags: properties.Tags.type === "multi_select" ? properties.Tags.multi_select.map(tag => ({
                     color: tag.color,
-                    name: tag.name,
-                })),
+                    name: tag.name
+                })) : []
             } as ArticleType;
         });
         return articles;

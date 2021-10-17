@@ -35,7 +35,6 @@ export type PostType = {
     heading: string;
     publishDate: string;
     imageUrl: string;
-    linkedInURL: string;
     tags: TagType[];
     category: string;
 };
@@ -46,8 +45,7 @@ export type ProjectType = {
     description: string;
     githubURL: string;
     heading: string;
-    isLive: boolean;
-    liveURL: string;
+    redirectURL: string;
     tags: TagType[];
 };
 
@@ -64,5 +62,5 @@ export type ArticleType = {
 export type PostsReturnType = {
     posts?: PostType[],
     has_more: boolean,
-    next_cursor?: string;
+    next_cursor: string | null;
 }

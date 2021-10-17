@@ -16,17 +16,21 @@ interface WritingsProps {
     articles: ArticleType[];
 }
 
-const DynamicPDFViewer = dynamic(() =>
-    import('@/components/PDFViewer').then((mod) => mod.PDFViewer)
+const DynamicPDFViewer = dynamic<any>(
+    () => import('@/components/PDFViewer').then((mod) => mod.PDFViewer),
+    {
+        ssr: false,
+    }
 );
 
 const Writings = ({ fetchedPostsData, articles }: WritingsProps): ReactNode => {
     const [selectedPost, setSelectedPost] = useState<PostType>();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string>();
     const [postsData, setPostsData] = useState<PostsReturnType>({
         has_more: false,
         posts: [],
+        next_cursor: null,
     });
     const [showPDF, setShowPDF] = useState(false);
 
@@ -42,7 +46,7 @@ const Writings = ({ fetchedPostsData, articles }: WritingsProps): ReactNode => {
     };
     const onPDFClose = () => {
         setShowPDF(false);
-        setSelectedPost(null);
+        setSelectedPost(undefined);
     };
     const fetchMorePosts = async () => {
         if (!postsData.has_more) return;
@@ -75,7 +79,7 @@ const Writings = ({ fetchedPostsData, articles }: WritingsProps): ReactNode => {
             <section className="text-gray-600">
                 <div className="container mx-auto">
                     <div className="flex flex-wrap">
-                        {postsData.posts.map((post) => (
+                        {postsData.posts?.map((post) => (
                             <Post post={post} key={post.id} onClick={onPostSelect} />
                         ))}
                     </div>
@@ -108,7 +112,7 @@ const Writings = ({ fetchedPostsData, articles }: WritingsProps): ReactNode => {
             </div>
 
             <Backdrop show={showPDF} onClose={onPDFClose} className="bg-gray-400 opacity-80">
-                <DynamicPDFViewer pdfUrl={selectedPost?.fileUrl} />
+                {selectedPost?.fileUrl && <DynamicPDFViewer pdfUrl={selectedPost?.fileUrl} />}
             </Backdrop>
         </>
     );
