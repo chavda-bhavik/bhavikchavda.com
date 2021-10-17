@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Fragment } from 'react';
-import { GetStaticProps } from 'next';
+import React, { useState, Fragment } from 'react';
+import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
 
 import { getPosts, getProjects } from '@/lib/notion';
@@ -88,7 +87,7 @@ const IndexPage = ({ posts, projects }: IndexPageProps) => {
     );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps<IndexPageProps> = async () => {
     const postsData = await getPosts(3);
     const projects = await getProjects(3);
     return {

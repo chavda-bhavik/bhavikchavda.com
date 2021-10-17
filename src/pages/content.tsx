@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { GetStaticProps } from 'next';
+import React, { useEffect, useState } from 'react';
+import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
 
 import { Heading } from '@/components/Heading';
@@ -23,7 +23,7 @@ const DynamicPDFViewer = dynamic<any>(
     }
 );
 
-const Writings = ({ fetchedPostsData, articles }: WritingsProps): ReactNode => {
+const Writings = ({ fetchedPostsData, articles }: WritingsProps) => {
     const [selectedPost, setSelectedPost] = useState<PostType>();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string>();
@@ -118,7 +118,7 @@ const Writings = ({ fetchedPostsData, articles }: WritingsProps): ReactNode => {
     );
 };
 
-export const getStaticProps: GetStaticProps<WritingsProps> = async () => {
+export const getServerSideProps: GetServerSideProps<WritingsProps> = async () => {
     const postsData = await getPosts(6);
     const articles = await getArticles(4);
     return {
