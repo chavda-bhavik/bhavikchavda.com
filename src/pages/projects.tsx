@@ -14,13 +14,13 @@ interface ProjectsProps {
 const Projects = ({ projects }: ProjectsProps): ReactNode => {
     return (
         <>
-            <SEO title="Projects" description="projects created by bhavik chavda" />
+            <SEO title="Projects" description="hobby projects created by bhavik chavda" />
             <Heading
                 icon="joyStick"
                 title="Projects"
                 className="mt-7 mb-5"
                 variant="description"
-                description="Web Development side Projects"
+                description="Web Development hobby Projects"
             />
             <div className="space-y-2">
                 {projects.map((project) => (
