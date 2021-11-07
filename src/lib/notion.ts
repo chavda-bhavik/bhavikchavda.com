@@ -196,6 +196,6 @@ export async function getLink(slug: string) {
             return obj.type === 'url' ? obj.url : '';
         }
     } catch (error) {
-        return '';
+        throw new Error(error.message);
     }
 }

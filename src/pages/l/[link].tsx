@@ -6,14 +6,16 @@ const Link = ({}) => {
     return <p>Should Not come here</p>;
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
-    const link = await getLink(params.link as string);
-    if (link) {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+    try {
+        const link = await getLink(params.link as string);
         return {
-            notFound: true,
-            redirect: link,
+            redirect: {
+                destination: link,
+                permanent: true,
+            },
         };
-    } else {
+    } catch (error) {
         return {
             notFound: true,
         };
