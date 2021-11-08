@@ -19,7 +19,8 @@ export type IconsType =
     | 'world'
     | 'code'
     | 'chevronCircleRightF'
-    | 'chevronCircleLeftF' | 'loader';
+    | 'chevronCircleLeftF'
+    | 'loader';
 
 export type IconsSizesType = 'sm' | 'md' | 'lg';
 
@@ -60,7 +61,20 @@ export type ArticleType = {
 };
 
 export type PostsReturnType = {
-    posts?: PostType[],
-    has_more: boolean,
+    posts?: PostType[];
+    has_more: boolean;
     next_cursor: string | null;
-}
+};
+
+export type Frontmatter = {
+    title: string;
+    description: string;
+    publishedAt: string;
+    updatedAt?: string;
+    tags: string[];
+    toc?: boolean;
+    isPublished: boolean;
+    seoImage?: string;
+    slug: string;
+    readingTime?: { text: string; minutes: number; time: number; words: number };
+};

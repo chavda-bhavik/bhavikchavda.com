@@ -13,7 +13,7 @@ interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({
     disabled,
     loading,
-    variant,
+    variant = 'primary',
     children,
     className,
     onClick,

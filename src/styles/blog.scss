@@ -1,0 +1,115 @@
+.blog {
+    a {
+        @apply text-blue-700 underline;
+    }
+
+    p {
+        @apply my-2;
+    }
+
+    blockquote,
+    figure {
+        @apply py-4 px-5 border-l-4 border-gray-600 bg-gray-300 italic;
+    }
+
+    table {
+        @apply table-auto shadow-sm bg-white;
+        th {
+            @apply bg-blue-100 border text-left px-4 py-2;
+        }
+        tr {
+            @apply whitespace-nowrap;
+            td {
+                @apply border px-4 py-2;
+            }
+        }
+    }
+
+    hr {
+        @apply border;
+    }
+
+    h1 {
+        @apply text-4xl font-bold my-2;
+    }
+
+    h2 {
+        @apply text-2xl font-bold my-2;
+    }
+
+    h3 {
+        @apply text-lg font-bold my-2;
+    }
+
+    h4 {
+        @apply text-base font-bold my-2;
+    }
+
+    h5 {
+        @apply text-sm font-bold my-2;
+    }
+
+    h6 {
+        @apply text-xs font-bold my-2;
+    }
+
+    ul,
+    menu {
+        @apply list-disc my-1 pl-10;
+    }
+
+    ol {
+        @apply list-decimal my-4 pl-10;
+    }
+
+    ul,
+    ol {
+        ul {
+            list-style-type: circle;
+        }
+
+        ul,
+        ol {
+            ul {
+                list-style-type: square;
+            }
+        }
+    }
+
+    dd {
+        @apply pl-10;
+    }
+
+    dl {
+        @apply my-4;
+    }
+
+    ul,
+    ol,
+    menu,
+    dl {
+        ul,
+        ol,
+        menu,
+        dl {
+            margin: 0;
+        }
+    }
+
+    legend {
+        @apply py-0 px-1;
+    }
+
+    fieldset {
+        @apply my-0 mx-1 pt-0 px-1 pb-2;
+    }
+
+    b,
+    strong {
+        font-weight: bold;
+    }
+
+    pre {
+        @apply my-4;
+    }
+}
