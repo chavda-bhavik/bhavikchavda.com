@@ -10,7 +10,7 @@ interface PostProps {
 
 export const Post: React.FC<PostProps> = ({ post, onClick }) => {
     return (
-        <div onClick={() => onClick(post)} className="block p-2 md:w-1/3">
+        <div onClick={() => onClick(post)} className="block py-2 md:p-2 w-full md:w-1/3">
             <div className="h-full border-2 flex flex-col border-classy-maroon hover:shadow-lg border-opacity-60 rounded-lg cursor-pointer transition-colors hover:border-classy-dark duration-300">
                 <div className="p-4 flex flex-col h-full justify-between">
                     <div>

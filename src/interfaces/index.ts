@@ -51,7 +51,7 @@ export type ProjectType = {
 };
 
 export type ArticleType = {
-    id: string;
+    id: string | number;
     date: string;
     description: string;
     blogURL: string;

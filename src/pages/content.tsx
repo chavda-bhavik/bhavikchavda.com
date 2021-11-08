@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
 import { Heading } from '@/components/Heading';
 import { getArticles, getPosts } from '@/lib/notion';
@@ -14,6 +17,7 @@ import { Button } from '@/components/Button';
 interface WritingsProps {
     fetchedPostsData: PostsReturnType;
     articles: ArticleType[];
+    posts: ArticleType[];
 }
 
 const DynamicPDFViewer = dynamic<any>(
@@ -23,7 +27,7 @@ const DynamicPDFViewer = dynamic<any>(
     }
 );
 
-const Writings = ({ fetchedPostsData, articles }: WritingsProps) => {
+const Writings = ({ fetchedPostsData, articles, posts }: WritingsProps) => {
     const [selectedPost, setSelectedPost] = useState<PostType>();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string>();
@@ -107,7 +111,10 @@ const Writings = ({ fetchedPostsData, articles }: WritingsProps) => {
             />
             <div className="mx-auto space-y-2 mt-3 mb-10">
                 {articles.map((article) => (
-                    <Article article={article} key={article.id} />
+                    <Article article={article} key={article.id} type="external" />
+                ))}
+                {posts.map((post) => (
+                    <Article article={post} key={post.id} type="internal" />
                 ))}
             </div>
 
@@ -118,13 +125,31 @@ const Writings = ({ fetchedPostsData, articles }: WritingsProps) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps<WritingsProps> = async () => {
+export const getServerSideProps: GetServerSideProps<Partial<WritingsProps>> = async () => {
+    const files = fs.readdirSync(path.join('content/blog'));
+
+    const posts: ArticleType[] = files.map((filename, i) => {
+        const markdownWithMeta = fs.readFileSync(path.join('content/blog', filename), 'utf-8');
+        const { data: frontMatter } = matter(markdownWithMeta);
+
+        return {
+            id: i + 1,
+            date: frontMatter.publishedAt,
+            tags: frontMatter.tags,
+            imageURL: frontMatter.thumbnailUrl,
+            heading: frontMatter.title,
+            description: frontMatter.description,
+            blogURL: `blog/${filename.split('.')[0]}`,
+        };
+    });
+
     const postsData = await getPosts(6);
     const articles = await getArticles(4);
     return {
         props: {
             fetchedPostsData: postsData,
             articles,
+            posts,
         },
     };
 };
