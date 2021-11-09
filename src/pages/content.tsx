@@ -128,20 +128,22 @@ const Writings = ({ fetchedPostsData, articles, posts }: WritingsProps) => {
 export const getServerSideProps: GetServerSideProps<Partial<WritingsProps>> = async () => {
     const files = fs.readdirSync(path.join('content/blog'));
 
-    const posts: ArticleType[] = files.map((filename, i) => {
+    const posts: ArticleType[] = files.reduce((list, filename, i) => {
         const markdownWithMeta = fs.readFileSync(path.join('content/blog', filename), 'utf-8');
         const { data: frontMatter } = matter(markdownWithMeta);
-
-        return {
-            id: i + 1,
-            date: frontMatter.publishedAt,
-            tags: frontMatter.tags,
-            imageURL: frontMatter.thumbnailUrl,
-            heading: frontMatter.title,
-            description: frontMatter.description,
-            blogURL: `blog/${filename.split('.')[0]}`,
-        };
-    });
+        if (frontMatter.isPublished) {
+            list.push({
+                id: i + 1,
+                date: frontMatter.publishedAt,
+                tags: frontMatter.tags,
+                imageURL: frontMatter.thumbnailUrl,
+                heading: frontMatter.title,
+                description: frontMatter.description,
+                blogURL: `blog/${filename.split('.')[0]}`,
+            });
+        }
+        return list;
+    }, [] as ArticleType[]);
 
     const postsData = await getPosts(6);
     const articles = await getArticles(4);

@@ -5,8 +5,6 @@ import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import ReactSyntaxHighlighter from 'react-syntax-highlighter';
 
-import { Button } from '@/components/Button';
-
 const SyntaxHighlighter = (props) => (
     <ReactSyntaxHighlighter
         {...props}
@@ -116,17 +114,22 @@ const SyntaxHighlighter = (props) => (
     />
 );
 
-const components = { Button, SyntaxHighlighter };
+const components = { SyntaxHighlighter };
 
 const PostPage = ({ frontMatter: { title, date }, mdxSource }) => {
     return (
-        <div className="mt-4 container">
-            <h1>{title}</h1>
-            <div className="blog">
-                <article>
+        <div className="container flex-grow px-5 m-auto mt-16 sm:px-8 md:px-10">
+            <article>
+                <div className="mb-2 text-sm tracking-normal">
+                    <span>
+                        <time dateTime="2020-12-29T18:30:00.000Z">December 30 2020</time>
+                    </span>
+                </div>
+                <h1 className="mb-10 text-4xl font-extrabold lg:text-6xl">{title}</h1>
+                <div className="blog">
                     <MDXRemote {...mdxSource} components={components} lazy />
-                </article>
-            </div>
+                </div>
+            </article>
         </div>
     );
 };
