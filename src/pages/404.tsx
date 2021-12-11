@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
-import SEO from '@/components/SEO';
+import { SEO } from '@/components/SEO';
 import { Blob } from '@/components/Highlight';
 import { Layout } from '@/components/Layout';
 

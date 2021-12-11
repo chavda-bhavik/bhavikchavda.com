@@ -1,52 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { graphql, PageProps } from 'gatsby';
 
-import { Heading } from '@/components/Heading';
-import { ArticleType, PostsReturnType, PostType } from '@/interfaces';
-import { Post } from '@/components/Post';
-import { Article } from '@/components/Article';
-import SEO from '@/components/SEO';
-import { Button } from '@/components/Button';
-import { Layout } from '@/components/Layout';
+import { ArticleType, PostType } from '@/interfaces';
+import { Heading, Post, Article, SEO, Layout, Button } from '@/components';
 
-interface WritingsProps {}
-
-const Writings = () => {
-    const [selectedPost, setSelectedPost] = useState<PostType>();
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string>();
-    const [postsData, setPostsData] = useState<PostsReturnType>({
-        has_more: false,
-        posts: [],
-        next_cursor: null,
-    });
-    let articles = [];
-
-    const onPostSelect = (post: PostType) => {
-        if (post.fileUrl) {
-            setSelectedPost(post);
-        }
+interface WritingsProps {
+    posts: {
+        nodes: {
+            frontmatter: PostType;
+        }[];
     };
-    const onPDFClose = () => {
-        setSelectedPost(undefined);
+    articles: {
+        nodes: {
+            frontmatter: ArticleType;
+        }[];
     };
-    const fetchMorePosts = async () => {
-        if (!postsData.has_more) return;
-        setLoading(true);
-        try {
-            let response = await fetch(`/api/posts?start_cursor=${postsData.next_cursor}`);
-            if (!response.ok) throw new Error();
-            // everything gone well
-            let newPostsData = (await response.json()) as PostsReturnType;
-            setPostsData(newPostsData);
-            setLoading(false);
-        } catch (error) {
-            setLoading(false);
-            setError('Some error occurred! Please try again later.');
-        }
-    };
+}
 
+const Writings = ({ data }: PageProps<WritingsProps>) => {
     return (
-        <Layout>
+        <Layout path="/content">
             <SEO title="Writings" description="Articles and Content written by bhavik chavda" />
 
             {/* Posts */}
@@ -60,12 +33,12 @@ const Writings = () => {
             <section className="text-gray-600">
                 <div className="container mx-auto">
                     <div className="flex flex-wrap">
-                        {postsData.posts?.map((post) => (
-                            <Post post={post} key={post.id} onClick={onPostSelect} />
+                        {data.posts.nodes.map((post, i) => (
+                            <Post post={post.frontmatter} key={i} onClick={() => {}} />
                         ))}
                     </div>
                 </div>
-                {postsData.has_more && (
+                {/* {postsData.has_more && (
                     <Button
                         variant="primary"
                         onClick={fetchMorePosts}
@@ -75,7 +48,7 @@ const Writings = () => {
                         Load More Posts
                     </Button>
                 )}
-                {error && <p className="text-red-500 font-medium">{error}</p>}
+                {error && <p className="text-red-500 font-medium">{error}</p>} */}
             </section>
 
             {/* Articles */}
@@ -87,8 +60,8 @@ const Writings = () => {
                 description="Recent written articles"
             />
             <div className="mx-auto space-y-2 mt-3 mb-10">
-                {articles.map((article) => (
-                    <Article article={article} key={article.id} />
+                {data.articles.nodes.map((article, i) => (
+                    <Article article={article.frontmatter} key={i} />
                 ))}
             </div>
         </Layout>
@@ -96,3 +69,41 @@ const Writings = () => {
 };
 
 export default Writings;
+
+export const pageQuery = graphql`
+    {
+        posts: allMarkdownRemark(
+            filter: { frontmatter: { type: { eq: "posts" } } }
+            sort: { order: DESC, fields: frontmatter___date }
+            limit: 6
+        ) {
+            nodes {
+                frontmatter {
+                    category
+                    description
+                    date(fromNow: true)
+                    heading
+                    tags
+                    title
+                    url
+                }
+            }
+            totalCount
+        }
+        articles: allMarkdownRemark(
+            filter: { frontmatter: { type: { eq: "articles" } } }
+            sort: { order: DESC, fields: frontmatter___date }
+        ) {
+            nodes {
+                frontmatter {
+                    description
+                    date(fromNow: true)
+                    heading
+                    tags
+                    title
+                    url
+                }
+            }
+        }
+    }
+`;

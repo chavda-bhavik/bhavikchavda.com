@@ -10,7 +10,7 @@ interface ArticleProps {
 export const Article: React.FC<ArticleProps> = ({ article }) => {
     return (
         <NavLink
-            link={article.blogURL}
+            link={article.url}
             className="block card"
             type="external"
             title={`Read '${article.heading}'`}

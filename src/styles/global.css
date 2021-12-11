@@ -16,7 +16,8 @@
         }
     }
     .link {
-        @apply hover:underline text-blue-400 cursor-pointer font-medium transition-all tracking-wide;
+        @apply hover:underline cursor-pointer font-medium transition-all tracking-wide;
+        color: rgb(98, 178, 210);
     }
     .about-title {
         @apply font-bold text-2xl mt-6 mb-3;

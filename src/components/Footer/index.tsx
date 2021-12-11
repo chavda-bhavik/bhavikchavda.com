@@ -102,6 +102,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                                 />
                             </NavLink>
                             <NavLink
+                                type="external"
                                 link={links.linkedIn}
                                 ariaLabel="View LinkedIn Profile"
                                 title="LinkedIn"

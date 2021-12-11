@@ -1,18 +1,26 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 
-import { Layout } from '@/components/Layout';
-import SEO from '@/components/SEO';
-import { Post } from '@/components/Post';
 import { links } from '@/config/constants';
-import { NavLink } from '@/components/NavLink';
-import { Highlight } from '@/components/Highlight';
-import { Heading } from '@/components/Heading';
-import { Project } from '@/components/Project';
+import { PostType, ProjectType } from '@/interfaces';
+import { SEO, Layout, Post, NavLink, Highlight, Heading, Project } from '@/components';
 
-const Home = () => {
+interface HomeProps {
+    posts: {
+        nodes: {
+            frontmatter: PostType;
+        }[];
+    };
+    projects: {
+        nodes: {
+            frontmatter: ProjectType;
+        }[];
+    };
+}
+
+const Home = (props: PageProps<HomeProps>) => {
     return (
-        <Layout>
+        <Layout path="/">
             <SEO title="Home" />
 
             <Highlight />
@@ -39,35 +47,17 @@ const Home = () => {
             {/* Projects */}
             <Heading icon="thunder" title="Projects" />
             <div className="space-y-1 mt-3 mb-10 flex flex-wrap">
-                <Project
-                    project={{
-                        heading: 'Pomodoro',
-                        description: 'A simple pomodoro timer',
-                        redirectURL: 'https://pomodoro-timer.netlify.app/',
-                        id: 'asdf',
-                        date: '2020-05-01',
-                        githubURL: 'www.github.com',
-                        tags: [],
-                    }}
-                />
+                {props.data.projects.nodes.map((project, i) => (
+                    <Project key={i} project={project.frontmatter} />
+                ))}
             </div>
 
             {/* Writings */}
             <Heading icon="linkedIn" title="LinkedIn Posts" />
             <div className="space-y-1 mt-3 mb-10 flex flex-wrap">
-                <Post
-                    post={{
-                        category: 'Projects',
-                        description: 'A simple blog application built with GatsbyJS',
-                        fileUrl: '',
-                        heading: 'Blog',
-                        id: 'asdf',
-                        imageUrl: '',
-                        publishDate: '18/09/1999',
-                        tags: [],
-                    }}
-                    onClick={() => {}}
-                />
+                {props.data.posts.nodes.map((post, i) => (
+                    <Post key={i} post={post.frontmatter} onClick={() => {}} />
+                ))}
             </div>
         </Layout>
     );
@@ -77,21 +67,36 @@ export default Home;
 
 export const pageQuery = graphql`
     query {
-        site {
-            siteMetadata {
-                title
+        posts: allMarkdownRemark(
+            filter: { frontmatter: { type: { eq: "posts" } } }
+            sort: { order: DESC, fields: frontmatter___date }
+            limit: 4
+        ) {
+            nodes {
+                frontmatter {
+                    category
+                    description
+                    date(fromNow: true)
+                    heading
+                    tags
+                    title
+                    url
+                }
             }
         }
-        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+        projects: allMarkdownRemark(
+            filter: { frontmatter: { type: { eq: "projects" } } }
+            sort: { order: DESC, fields: frontmatter___date }
+            limit: 4
+        ) {
             nodes {
-                excerpt
-                fields {
-                    slug
-                }
                 frontmatter {
-                    date(formatString: "MMMM DD, YYYY")
-                    title
                     description
+                    date(fromNow: true)
+                    heading
+                    tags
+                    title
+                    url
                 }
             }
         }

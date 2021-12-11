@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import classNames from 'classnames';
 
 interface NavLinkProps {
     link: string;
@@ -30,7 +31,12 @@ export const NavLink: React.FC<NavLinkProps> = ({
         </a>
     );
     let internalLink = (
-        <Link to={link} title={title} aria-label={ariaLabel}>
+        <Link
+            to={link}
+            title={title}
+            aria-label={ariaLabel}
+            className={classNames('link', className)}
+        >
             {children}
         </Link>
     );

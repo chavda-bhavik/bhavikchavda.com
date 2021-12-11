@@ -1,12 +1,10 @@
 import React from 'react';
-import { Heading } from '@/components/Heading';
-import SEO from '@/components/SEO';
-import { NavLink } from '@/components/NavLink';
+
 import { links } from '@/config/constants';
-import { Layout } from '@/components/Layout';
+import { Heading, SEO, NavLink, Layout } from '@/components';
 
 const AboutPage = () => (
-    <Layout>
+    <Layout path="/about">
         <SEO title="About" description="About Bhavik Chavda" />
 
         <Heading icon="smiley" className="mt-7 mb-5" />

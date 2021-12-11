@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import Avatar from '@/assets/the-avatar.jpeg';
@@ -7,16 +7,12 @@ import { Icon } from '@/components/Icon';
 import { NavLink } from '@/components/NavLink';
 import { MenuItems } from '@/config/constants';
 
-interface HeaderProps {}
+interface HeaderProps {
+    path?: string;
+}
 
-export const Header: React.FC<HeaderProps> = ({}) => {
-    // const router = useRouter();
-    let selected;
+export const Header: React.FC<HeaderProps> = ({ path = '/' }) => {
     const [toggleMenu, setToggleMenu] = useState(false);
-
-    // useEffect(() => {
-    //     setToggleMenu(false);
-    // }, [router.asPath]);
 
     return (
         <header className="flex flex-row py-4 px-2">
@@ -37,13 +33,14 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                         // selected = menu.exact
                         //     ? router.asPath === menu.link
                         //     : router.asPath.startsWith(menu.link);
+                        // rgb(98, 178, 210) // link
                         return (
                             <NavLink
                                 className={classNames(
                                     'hover:text-classy-dark font-medium text-lg transition-colors',
                                     {
-                                        'text-classy-medium': !selected,
-                                        'text-classy-dark': selected,
+                                        'text-classy-dark': path === menu.link,
+                                        'text-classy-medium': path !== menu.link,
                                     }
                                 )}
                                 type="internal"
@@ -71,16 +68,13 @@ export const Header: React.FC<HeaderProps> = ({}) => {
                 >
                     <div className="flex flex-col items-center w-full h-full my-auto">
                         {MenuItems.map((menu) => {
-                            // selected = menu.exact
-                            //     ? router.asPath === menu.link
-                            //     : router.asPath.startsWith(menu.link);
                             return (
                                 <NavLink
                                     className={classNames(
                                         'hover:text-classy-dark font-medium text-xl transition-colors my-5',
                                         {
-                                            'text-classy-medium': !selected,
-                                            'text-classy-dark': selected,
+                                            'text-classy-dark': path === menu.link,
+                                            'text-classy-medium': path !== menu.link,
                                         }
                                     )}
                                     link={menu.link}

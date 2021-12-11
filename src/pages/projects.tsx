@@ -1,28 +1,31 @@
 import React, { ReactNode } from 'react';
+import { graphql, PageProps } from 'gatsby';
 
-import SEO from '@/components/SEO';
 import { ProjectType } from '@/interfaces';
-import { Layout } from '@/components/Layout';
-import { Project } from '@/components/Project';
-import { Heading } from '@/components/Heading';
+import { SEO, Layout, Project, Heading } from '@/components';
 
-interface ProjectsProps {}
+interface ProjectsProps {
+    projects: {
+        nodes: {
+            frontmatter: ProjectType;
+        }[];
+    };
+}
 
-const Projects = ({}: ProjectsProps): ReactNode => {
-    let projects: ProjectType[] = [];
+const Projects = ({ data }: PageProps<ProjectsProps>): ReactNode => {
     return (
-        <Layout>
-            <SEO title="Projects" description="hobby projects created by bhavik chavda" />
+        <Layout path="/projects">
+            <SEO title="Projects" description="Hobby projects created by bhavik chavda" />
             <Heading
                 icon="joyStick"
                 title="Projects"
                 className="mt-7 mb-5"
                 variant="description"
-                description="Web Development hobby Projects"
+                description="Hobby Projects"
             />
             <div className="space-y-2">
-                {projects.map((project) => (
-                    <Project project={project} key={project.id} />
+                {data.projects.nodes.map((project, i) => (
+                    <Project project={project.frontmatter} key={i} />
                 ))}
             </div>
         </Layout>
@@ -30,3 +33,23 @@ const Projects = ({}: ProjectsProps): ReactNode => {
 };
 
 export default Projects;
+
+export const pageQuery = graphql`
+    query {
+        projects: allMarkdownRemark(
+            filter: { frontmatter: { type: { eq: "projects" } } }
+            sort: { order: DESC, fields: frontmatter___date }
+        ) {
+            nodes {
+                frontmatter {
+                    description
+                    date(fromNow: true)
+                    heading
+                    tags
+                    title
+                    url
+                }
+            }
+        }
+    }
+`;
