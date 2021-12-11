@@ -5,7 +5,6 @@ import { ArticleType, PostsReturnType, PostType } from '@/interfaces';
 import { Post } from '@/components/Post';
 import { Article } from '@/components/Article';
 import SEO from '@/components/SEO';
-import { Backdrop } from '@/components/Backdrop';
 import { Button } from '@/components/Button';
 import { Layout } from '@/components/Layout';
 
