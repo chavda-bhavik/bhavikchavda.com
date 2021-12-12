@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
+import { StaticImage } from 'gatsby-plugin-image';
 
-import Avatar from '@/assets/the-avatar.jpeg';
 import { Backdrop } from '@/components/Backdrop';
 import { Icon } from '@/components/Icon';
 import { NavLink } from '@/components/NavLink';
@@ -17,12 +17,14 @@ export const Header: React.FC<HeaderProps> = ({ path = '/' }) => {
     return (
         <header className="flex flex-row py-4 px-2">
             <NavLink link="/" type="internal" className="flex items-center">
-                <img
-                    src={Avatar}
+                <StaticImage
+                    src="../../images/header-avatar.jpg"
                     height={45}
                     width={45}
-                    alt="Avatar"
-                    className="rounded-full cursor-pointer my-auto"
+                    alt="Bhavik Chavda"
+                    placeholder="blurred"
+                    layout="fixed"
+                    className="rounded-full cursor-pointer my-auto h-11 w-11"
                 />
             </NavLink>
 
@@ -30,17 +32,13 @@ export const Header: React.FC<HeaderProps> = ({ path = '/' }) => {
             <div className="hidden sm:flex w-full flex-row items-center pl-2">
                 <div className="flex-row space-x-2 lg:space-x-3 flex">
                     {MenuItems.map((menu) => {
-                        // selected = menu.exact
-                        //     ? router.asPath === menu.link
-                        //     : router.asPath.startsWith(menu.link);
-                        // rgb(98, 178, 210) // link
                         return (
                             <NavLink
                                 className={classNames(
-                                    'hover:text-classy-dark font-medium text-lg transition-colors',
+                                    'hover:no-underline font-medium text-lg transition-colors my-1 border-b-4 text-classy-dark hover:border-classy-dark',
                                     {
-                                        'text-classy-dark': path === menu.link,
-                                        'text-classy-medium': path !== menu.link,
+                                        'border-classy-dark': path === menu.link,
+                                        'border-transparent': path !== menu.link,
                                     }
                                 )}
                                 type="internal"
@@ -71,10 +69,10 @@ export const Header: React.FC<HeaderProps> = ({ path = '/' }) => {
                             return (
                                 <NavLink
                                     className={classNames(
-                                        'hover:text-classy-dark font-medium text-xl transition-colors my-5',
+                                        'font-medium text-xl transition-colors my-5 border-b-4 text-classy-dark hover:border-classy-dark',
                                         {
-                                            'text-classy-dark': path === menu.link,
-                                            'text-classy-medium': path !== menu.link,
+                                            'border-classy-dark': path === menu.link,
+                                            'border-transparent': path !== menu.link,
                                         }
                                     )}
                                     link={menu.link}

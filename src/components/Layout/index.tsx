@@ -14,6 +14,6 @@ export const Layout = ({ children, path }: Props) => (
             <Header path={path} />
             <main className="px-2">{children}</main>
         </div>
-        <Footer />
+        <Footer path={path} />
     </>
 );

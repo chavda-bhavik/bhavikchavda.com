@@ -36,8 +36,15 @@ export const Backdrop: React.FC<BackdropProps> = ({
             aria-modal="true"
         >
             <div className={`min-h-screen h-full flex justify-center items-center`}>
-                <button className="z-30 absolute top-4 right-4" onClick={onClose}>
-                    <Icon icon={'close'} size="md" className={iconClassName} />
+                <button
+                    className="z-30 absolute top-4 right-4 rounded-full bg-slate-500"
+                    onClick={onClose}
+                >
+                    <Icon
+                        icon={'close'}
+                        size="md"
+                        className={iconClassName ? iconClassName : 'text-white'}
+                    />
                 </button>
                 <div
                     className={`fixed inset-0 transition-opacity ${className}`}

@@ -2,7 +2,10 @@ import React, { ReactNode } from 'react';
 import { graphql, PageProps } from 'gatsby';
 
 import { ProjectType } from '@/interfaces';
-import { SEO, Layout, Project, Heading } from '@/components';
+import { SEO } from '@/components/SEO';
+import { Layout } from '@/components/Layout';
+import { Heading } from '@/components/Heading';
+import { Project } from '@/components/Project';
 
 interface ProjectsProps {
     projects: {

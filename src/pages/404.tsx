@@ -6,7 +6,7 @@ import { Layout } from '@/components/Layout';
 
 const NotFoundPage = () => {
     return (
-        <Layout>
+        <Layout path="/404">
             <SEO title="404: Page Not Foud" />
             <div className="flex justify-center">
                 <div className="absolute">

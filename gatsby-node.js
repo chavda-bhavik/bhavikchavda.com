@@ -114,12 +114,20 @@ exports.createSchemaCustomization = ({ actions }) => {
   `)
 }
 
-exports.onCreateWebpackConfig = function ({ actions }) {
+exports.onCreateWebpackConfig = function ({ actions, stage, loaders }) {
     actions.setWebpackConfig({
         resolve: {
             alias: {
                 '@': path.resolve(__dirname, 'src'),
             },
+        },
+        module: {
+            rules: [
+                {
+                    test: /canvas/,
+                    use: loaders.null(),
+                },
+            ],
         },
     });
 };

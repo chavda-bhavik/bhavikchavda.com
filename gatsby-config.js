@@ -24,101 +24,72 @@ module.exports = {
                 name: `blog`,
             },
         },
-        // {
-        //     resolve: `gatsby-source-filesystem`,
-        //     options: {
-        //         name: `images`,
-        //         path: `${__dirname}/src/images`,
-        //     },
-        // },
-        {
-            resolve: `gatsby-transformer-remark`,
-            options: {
-                plugins: [
-                    {
-                        resolve: `gatsby-remark-images`,
-                        options: {
-                            maxWidth: 630,
-                        },
-                    },
-                    `gatsby-remark-prismjs`,
-                    `gatsby-remark-copy-linked-files`,
-                    `gatsby-remark-smartypants`,
-                ],
-            },
-        },
+        `gatsby-transformer-remark`,
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
-            resolve: `gatsby-plugin-feed`,
-            options: {
-                query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-                feeds: [
-                    {
-                        serialize: ({ query: { site, allMarkdownRemark } }) => {
-                            return allMarkdownRemark.nodes.map((node) => {
-                                return Object.assign({}, node.frontmatter, {
-                                    description: node.excerpt,
-                                    date: node.frontmatter.date,
-                                    url: site.siteMetadata.siteUrl + node.fields.slug,
-                                    guid: site.siteMetadata.siteUrl + node.fields.slug,
-                                    custom_elements: [{ 'content:encoded': node.html }],
-                                });
-                            });
-                        },
-                        query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            `,
-                        output: '/rss.xml',
-                        title: 'Gatsby Starter Blog RSS Feed',
-                    },
-                ],
-            },
-        },
-        {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `Gatsby Starter Blog`,
-                short_name: `GatsbyJS`,
+                name: `Bhavik Chavda`,
+                short_name: `Bhavik`,
                 start_url: `/`,
                 background_color: `#ffffff`,
                 // This will impact how browsers show your PWA/website
                 // https://css-tricks.com/meta-theme-color-and-trickery/
-                // theme_color: `#663399`,
+                theme_color: `#344B47`,
                 display: `minimal-ui`,
-                icon: `src/assets/the-avatar.jpeg`, // This path is relative to the root of the site.
+                icon: `static/favicon.png`, // This path is relative to the root of the site.
             },
         },
         `gatsby-plugin-react-helmet`,
-        // this (optional) plugin enables Progressive Web App + Offline functionality
-        // To learn more, visit: https://gatsby.dev/offline
-        // `gatsby-plugin-offline`,
+        `gatsby-plugin-offline`,
+        {
+            resolve: `gatsby-plugin-csp`,
+            options: {
+                disableOnDev: true,
+                reportOnly: false, // Changes header to Content-Security-Policy-Report-Only for csp testing purposes
+                mergeScriptHashes: false, // you can disable scripts sha256 hashes
+                mergeStyleHashes: false, // you can disable styles sha256 hashes
+                mergeDefaultDirectives: true,
+                directives: {
+                    'default-src': "'self'",
+                    'script-src': "'self' 'unsafe-inline' 'unsafe-eval'", // 'unsafe-eval' needed for react-pdf
+                    'style-src': "'self' 'unsafe-inline'",
+                    'img-src': "* 'self' data: blob:",
+                    'manifest-src': "'self'",
+                    'worker-src': "'self' blob:",
+                    'font-src': "'self'",
+                    'base-uri': "'self'",
+                    'prefetch-src': "'self'",
+                    'connect-src': "'self' https://res.cloudinary.com", // posts pdf are hosted on cloudinary
+                },
+            },
+        },
+        {
+            resolve: 'gatsby-plugin-sitemap',
+            options: {
+                query: `
+                    {
+                        allSitePage {
+                            nodes {
+                                path
+                            }
+                        }
+                    }
+                `,
+                resolveSiteUrl: () => `https://www.bhavikchavda.com`,
+                resolvePages: ({ allSitePage: { nodes: allPages } }) => {
+                    return allPages.map((page) => {
+                        return { ...page };
+                    });
+                },
+                serialize: ({ path, modifiedGmt }) => {
+                    return {
+                        url: path,
+                        lastmod: modifiedGmt,
+                    };
+                },
+            },
+        },
     ],
 };

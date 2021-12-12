@@ -1,5 +1,5 @@
 import React from 'react';
-import Avatar from '@/assets/the-avatar.jpeg';
+import { StaticImage } from 'gatsby-plugin-image';
 
 interface HighlightProps {}
 
@@ -23,20 +23,20 @@ export const Highlight: React.FC<HighlightProps> = ({}) => {
     return (
         <div className="flex flex-col-reverse md:flex-row h-full items-center my-32 justify-between space-y-reverse space-y-4 md:space-y-0">
             <h1 className="font-medium text-2xl md:text-2xl lg:text-3xl w-11/12 md:w-7/12">
-                Hey, I&apos;m Bhavik. Full Stack Web Developer building scalable and performant web
-                applications that solves user problem.
+                Hey, I&apos;m Bhavik. Passionate full stack developer with experience in JavaScript,
+                React, Redux, Node.js, Express, and GraphQL.
             </h1>
             <div className="relative">
                 <Blob />
                 <div className="absolute top-0 flex items-center justify-center w-full h-full">
                     <div className="w-32 h-32 overflow-hidden rounded-full md:h-40 md:w-40 lg:h-48 lg:w-48">
-                        <img
-                            src={Avatar}
-                            className="rounded-full"
-                            height={256}
+                        <StaticImage
+                            src="../../images/the-avatar.jpeg"
+                            alt="Bhavik"
+                            className="object-cover w-full h-full"
                             width={256}
-                            placeholder="blur"
-                            alt="Avatar"
+                            height={256}
+                            placeholder="blurred"
                         />
                     </div>
                 </div>

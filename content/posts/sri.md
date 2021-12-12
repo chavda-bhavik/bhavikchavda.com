@@ -5,6 +5,6 @@ description: "SRI help up discard documents execution if it's content is changed
 url: "https://res.cloudinary.com/dkuoqamig/image/upload/v1638719659/bhavikchavda.com/SRI_xt4obj.pdf"
 show: true
 date: 2021-12-01
-tags: [WebDevelopment]
+tags: [WebDevelopment, WebSecurity]
 category: "Web-Security"
 ---

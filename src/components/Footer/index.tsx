@@ -3,10 +3,13 @@ import React from 'react';
 import { Icon } from '@/components/Icon';
 import { NavLink } from '@/components/NavLink';
 import { links, MenuItems } from '@/config/constants';
+import classNames from 'classnames';
 
-interface FooterProps {}
+interface FooterProps {
+    path?: string;
+}
 
-export const Footer: React.FC<FooterProps> = ({}) => {
+export const Footer: React.FC<FooterProps> = ({ path }) => {
     return (
         <div className="bg-classy-base border-t-2 border-classy-dark pt-16 mt-16">
             <div className="container px-4 mx-auto">
@@ -53,7 +56,13 @@ export const Footer: React.FC<FooterProps> = ({}) => {
                                 key={i}
                                 type="internal"
                                 link={item.link}
-                                className="link text-classy-dark uppercase font-medium"
+                                className={classNames(
+                                    'link text-classy-dark uppercase font-medium border-b-4 hover:border-classy-dark hover:no-underline',
+                                    {
+                                        'border-classy-dark': path === item.link,
+                                        'border-classy-base': path !== item.link,
+                                    }
+                                )}
                                 title={item.title}
                             >
                                 {item.title}
