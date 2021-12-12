@@ -8,6 +8,7 @@ interface ButtonProps {
     variant?: 'primary';
     className?: string;
     onClick?: () => void;
+    ariaLabel: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -17,6 +18,7 @@ export const Button: React.FC<ButtonProps> = ({
     children,
     className,
     onClick,
+    ariaLabel,
 }) => {
     return (
         <button
@@ -30,6 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
                 className
             )}
             onClick={onClick}
+            aria-label={ariaLabel}
         >
             {loading && <Icon icon="loader" className="mr-1 text-white" size="sm" />}
             {children}

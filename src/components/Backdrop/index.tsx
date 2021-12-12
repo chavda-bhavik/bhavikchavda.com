@@ -39,6 +39,7 @@ export const Backdrop: React.FC<BackdropProps> = ({
                 <button
                     className="z-30 absolute top-4 right-4 rounded-full bg-slate-500"
                     onClick={onClose}
+                    aria-label="Close"
                 >
                     <Icon
                         icon={'close'}

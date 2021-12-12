@@ -77,6 +77,7 @@ const Writings = ({
                     </div>
                     {hasMore && (
                         <Button
+                            ariaLabel="Load More Posts"
                             variant="primary"
                             className="mx-auto font-medium"
                             onClick={loadMore}

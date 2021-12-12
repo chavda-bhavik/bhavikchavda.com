@@ -4,20 +4,20 @@
 
 @layer components {
     .animate-rotate-center {
-        animation: rotate-center 500ms cubic-bezier(0,0,1,1) infinite;
-        transform-origin:center center;
+        animation: rotate-center 500ms cubic-bezier(0, 0, 1, 1) infinite;
+        transform-origin: center center;
     }
-    @keyframes rotate-center{
+    @keyframes rotate-center {
         from {
-            transform:rotate(0)
+            transform: rotate(0);
         }
         to {
-            transform:rotate(360deg)
+            transform: rotate(360deg);
         }
     }
     .link {
         @apply hover:underline cursor-pointer font-medium transition-all tracking-wide;
-        color: rgb(98, 178, 210);
+        color: #2b6bb1;
     }
     .about-title {
         @apply font-bold text-2xl mt-6 mb-3;

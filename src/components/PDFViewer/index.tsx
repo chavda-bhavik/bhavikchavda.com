@@ -34,7 +34,7 @@ const PDFViewer: React.FC<PDFViewerProps> = React.memo(
 
         return (
             <div className="flex flex-row p-1 max-w-xl bg-gray-200 rounded-md">
-                <button onClick={onPreviousSlide} className="z-10">
+                <button onClick={onPreviousSlide} className="z-10" aria-label="Previous Page">
                     <Icon
                         icon="chevronCircleLeftF"
                         className={classNames('rounded-full', {
@@ -57,7 +57,12 @@ const PDFViewer: React.FC<PDFViewerProps> = React.memo(
                         />
                     )}
                 </Document>
-                <button onClick={onNextSlide} disabled={currentPage === numPages} className="z-10">
+                <button
+                    onClick={onNextSlide}
+                    disabled={currentPage === numPages}
+                    className="z-10"
+                    aria-label="next-page"
+                >
                     <Icon
                         icon="chevronCircleRightF"
                         className={classNames('rounded-full', {

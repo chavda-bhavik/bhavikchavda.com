@@ -56,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({ path = '/' }) => {
             {/* For mobile */}
             <div className="flex sm:hidden w-full flex-row justify-between items-center pl-2">
                 <span className="font-medium text-xl text-classy-dark">bhavikchavda.com</span>
-                <button onClick={() => setToggleMenu(true)}>
+                <button onClick={() => setToggleMenu(true)} aria-label="open menu">
                     <Icon icon="toggler" size="md" />
                 </button>
                 <Backdrop

@@ -83,7 +83,7 @@ const Home = (props: PageProps<HomeProps>) => {
             {!isSSR && (
                 <React.Suspense fallback={<Loader />}>
                     <Backdrop
-                        show={!!selectedPost}
+                        show={selectedPost?.url ? true : false}
                         onClose={() => setSelectedPost(undefined)}
                         className="bg-gray-900 opacity-30"
                     >
