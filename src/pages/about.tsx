@@ -68,7 +68,8 @@ const AboutPage = () => (
         <h2 className="about-title">Hobbies</h2>
         <ul className="list-disc list-inside">
             <li>Reading Books</li>
-            <li>Content Creation</li>
+            <li>Learning new Things</li>
+            <li>Exercise</li>
             <li>Cooking (sometimes)</li>
         </ul>
     </Layout>

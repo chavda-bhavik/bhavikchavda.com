@@ -53,7 +53,7 @@ const Home = (props: PageProps<HomeProps>) => {
                             LaNet Team Software Solutions
                         </NavLink>
                         . Where I build accessible, performant and scalable web applications using
-                        JavaScript and TypeScript
+                        JavaScript and TypeScript.
                     </li>
                     <li>
                         Studied Master of Science in Information Technology from{' '}

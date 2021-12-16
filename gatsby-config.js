@@ -31,14 +31,14 @@ module.exports = {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 name: `Bhavik Chavda`,
-                short_name: `Bhavik`,
+                short_name: `Bhavik Chavda`,
                 start_url: `/`,
                 background_color: `#ffffff`,
                 // This will impact how browsers show your PWA/website
                 // https://css-tricks.com/meta-theme-color-and-trickery/
                 theme_color: `#344B47`,
-                display: `minimal-ui`,
-                icon: `static/favicon.png`, // This path is relative to the root of the site.
+                display: `standalone`,
+                icon: `src/images/header-avatar.png`, // This path is relative to the root of the site.
             },
         },
         `gatsby-plugin-react-helmet`,
@@ -62,32 +62,6 @@ module.exports = {
                     'base-uri': "'self'",
                     'prefetch-src': "'self'",
                     'connect-src': "'self' https://res.cloudinary.com", // posts pdf are hosted on cloudinary
-                },
-            },
-        },
-        {
-            resolve: 'gatsby-plugin-sitemap',
-            options: {
-                query: `
-                    {
-                        allSitePage {
-                            nodes {
-                                path
-                            }
-                        }
-                    }
-                `,
-                resolveSiteUrl: () => `https://www.bhavikchavda.com`,
-                resolvePages: ({ allSitePage: { nodes: allPages } }) => {
-                    return allPages.map((page) => {
-                        return { ...page };
-                    });
-                },
-                serialize: ({ path, modifiedGmt }) => {
-                    return {
-                        url: path,
-                        lastmod: modifiedGmt,
-                    };
                 },
             },
         },

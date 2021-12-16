@@ -29,11 +29,11 @@ export const Highlight: React.FC<HighlightProps> = ({}) => {
             <div className="relative">
                 <Blob />
                 <div className="absolute top-0 flex items-center justify-center w-full h-full">
-                    <div className="w-32 h-32 overflow-hidden rounded-full md:h-40 md:w-40 lg:h-48 lg:w-48">
+                    <div className="w-32 h-32 overflow-hidden rounded-full md:h-40 md:w-40 lg:h-48 lg:w-48 bg-gradient-to-br from-classy-medium to-classy-dark">
                         <StaticImage
-                            src="../../images/the-avatar.jpeg"
+                            src="../../images/avatar-full.png"
                             alt="Bhavik"
-                            className="object-cover w-full h-full"
+                            className="w-full h-full"
                             width={256}
                             height={256}
                             placeholder="blurred"

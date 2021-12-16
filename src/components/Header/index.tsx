@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({ path = '/' }) => {
         <header className="flex flex-row py-4 px-2">
             <NavLink link="/" type="internal" className="flex items-center">
                 <StaticImage
-                    src="../../images/header-avatar.jpg"
+                    src="../../images/header-avatar.png"
                     height={45}
                     width={45}
                     alt="Bhavik Chavda"
@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({ path = '/' }) => {
                         return (
                             <NavLink
                                 className={classNames(
-                                    'hover:no-underline font-medium text-lg transition-colors my-1 border-b-4 text-classy-dark hover:border-classy-dark',
+                                    'hover:no-underline font-medium text-lg transition-colors my-1 border-b-4 text-classy-dark hover:border-classy-dark duration-500',
                                     {
                                         'border-classy-dark': path === menu.link,
                                         'border-transparent': path !== menu.link,
