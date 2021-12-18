@@ -1,0 +1,51 @@
+{
+	"post": {
+		"scope": "markdown, md",
+		"prefix": "post",
+		"body": [
+			"---",
+			"type: 'posts'",
+			"heading: \"$1\"",
+			"description: \"$2\"",
+			"url: \"$3\"",
+			"show: true",
+			"date: 2021-03-19$4",
+			"tags: [$5]",
+			"category: \"$6\"",
+			"---"
+		],
+		"description": "Add a new post"
+	},
+	"article": {
+		"scope": "markdown, md",
+		"prefix": "article",
+		"body": [
+			"---",
+			"type: 'articles'",
+			"heading: \"$1\"",
+			"description: \"$2\"",
+			"url: \"$3\"",
+			"show: true",
+			"date: 2021-03-19$4",
+			"tags: [$5]",
+			"---",
+		],
+		"description": "Add a new article"
+	},
+	"project": {
+		"scope": "markdown, md",
+		"prefix": "project",
+		"body": [
+			"---",
+			"type: 'projects'",
+			"heading: \"$1\"",
+			"description: \"$2\"",
+			"url: \"$3\"",
+			"githubUrl: \"$4\"",
+			"show: true",
+			"date: 2021-03-19$5",
+			"tags: [$6]",
+			"---"
+		],
+	}
+}

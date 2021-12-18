@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .animate-rotate-center {
+        animation: rotate-center 500ms cubic-bezier(0, 0, 1, 1) infinite;
+        transform-origin: center center;
+    }
+    @keyframes rotate-center {
+        from {
+            transform: rotate(0);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    .link {
+        @apply hover:underline cursor-pointer font-medium transition-all tracking-wide;
+        color: #2b6bb1;
+    }
+    .about-title {
+        @apply font-bold text-2xl mt-6 mb-3;
+    }
+    .hover-lift-up {
+        @apply transform hover:-translate-y-1;
+    }
+    .card-highlight {
+        @apply border-2 border-transparent transition-all ease-in-out bg-classy-base hover:border-classy-dark group-hover:shadow-lg;
+    }
+    .card {
+        /* group */
+        @apply px-2 py-5 rounded-md hover-lift-up cursor-pointer card-highlight;
+    }
+    .card-heading {
+        @apply tracking-normal mb-2 font-semibold text-2xl;
+    }
+    .card-description {
+        @apply text-base text-gray-800 mb-2;
+    }
+    .btn {
+        @apply transition-all rounded-md cursor-pointer py-2 px-3 flex flex-row space-x-2;
+    }
+    .btn-primary {
+        @apply bg-classy-dark border-transparent border-2 hover:border-classy-dark hover:bg-classy-light hover:text-classy-dark text-white disabled:text-classy-light disabled:bg-classy-dark;
+    }
+}
+
+.react-pdf__Page__textContent {
+    top: unset !important;
+    left: unset !important;
+}
+.react-pdf__Page__canvas {
+    margin: 0 auto;
+    width: 100% !important;
+    height: 100% !important;
+}

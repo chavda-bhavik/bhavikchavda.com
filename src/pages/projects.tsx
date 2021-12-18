@@ -1,43 +1,58 @@
 import React, { ReactNode } from 'react';
-import { GetServerSideProps } from 'next';
+import { graphql, PageProps } from 'gatsby';
 
-import { getProjects } from '@/lib/notion';
 import { ProjectType } from '@/interfaces';
+import { SEO } from '@/components/SEO';
+import { Layout } from '@/components/Layout';
 import { Heading } from '@/components/Heading';
 import { Project } from '@/components/Project';
-import { SEO } from '@/components/seo';
 
 interface ProjectsProps {
-    projects: ProjectType[];
+    projects: {
+        nodes: {
+            frontmatter: ProjectType;
+        }[];
+    };
 }
 
-const Projects = ({ projects }: ProjectsProps): ReactNode => {
+const Projects = ({ data }: PageProps<ProjectsProps>): ReactNode => {
     return (
-        <>
-            <SEO title="Projects" description="hobby projects created by bhavik chavda" />
+        <Layout path="/projects">
+            <SEO title="Projects" description="Hobby projects created by bhavik chavda" />
             <Heading
                 icon="joyStick"
                 title="Projects"
                 className="mt-7 mb-5"
                 variant="description"
-                description="Web Development hobby Projects"
+                description="Hobby Projects"
             />
             <div className="space-y-2">
-                {projects.map((project) => (
-                    <Project project={project} key={project.id} />
+                {data.projects.nodes.map((project, i) => (
+                    <Project project={project.frontmatter} key={i} />
                 ))}
             </div>
-        </>
+        </Layout>
     );
 };
 
-export const getServerSideProps: GetServerSideProps<ProjectsProps> = async () => {
-    const projects = await getProjects();
-    return {
-        props: {
-            projects,
-        },
-    };
-};
-
 export default Projects;
+
+export const pageQuery = graphql`
+    query {
+        projects: allMarkdownRemark(
+            filter: { frontmatter: { type: { eq: "projects" } } }
+            sort: { order: DESC, fields: frontmatter___date }
+        ) {
+            nodes {
+                frontmatter {
+                    description
+                    date(fromNow: true)
+                    heading
+                    tags
+                    title
+                    url
+                }
+            }
+        }
+    }
+`;

@@ -23,44 +23,28 @@ export type IconsType =
 
 export type IconsSizesType = 'sm' | 'md' | 'lg';
 
-export type TagType = {
-    color: string;
-    name: string;
-};
-
 export type PostType = {
-    id: string;
-    description: string;
-    fileUrl: string;
     heading: string;
-    publishDate: string;
-    imageUrl: string;
-    tags: TagType[];
+    description: string;
+    url: string;
+    date: string;
+    tags: string[];
     category: string;
 };
 
 export type ProjectType = {
-    id: string;
-    date: string;
-    description: string;
-    githubURL: string;
     heading: string;
-    redirectURL: string;
-    tags: TagType[];
+    description: string;
+    url: string;
+    githubUrl: string;
+    date: string;
+    tags: string[];
 };
 
 export type ArticleType = {
-    id: string;
-    date: string;
-    description: string;
-    blogURL: string;
     heading: string;
-    imageURL: string;
-    tags: TagType[];
+    description: string;
+    url: string;
+    date: string;
+    tags: string[];
 };
-
-export type PostsReturnType = {
-    posts?: PostType[],
-    has_more: boolean,
-    next_cursor: string | null;
-}

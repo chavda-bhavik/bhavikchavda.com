@@ -1,101 +1,124 @@
-import React, { useState, Fragment } from 'react';
-import { GetServerSideProps } from 'next';
-import dynamic from 'next/dynamic';
+import React from 'react';
+import { graphql, PageProps } from 'gatsby';
 
-import { getPosts, getProjects } from '@/lib/notion';
-import { Heading } from '@/components/Heading';
-import { PostType, ProjectType } from '@/interfaces';
-import { Post } from '@/components/Post';
-import { Project } from '@/components/Project';
-import { Highlight } from '@/components/Highlight';
-import { SEO } from '@/components/seo';
 import { links } from '@/config/constants';
-import { NavLink } from '@/components/NavLink';
-import { Backdrop } from '@/components/Backdrop';
+import { ArticleType, ProjectType } from '@/interfaces';
 
-interface IndexPageProps {
-    posts: PostType[];
-    projects: ProjectType[];
+import { SEO } from '@/components/SEO';
+import { Layout } from '@/components/Layout';
+import { NavLink } from '@/components/NavLink';
+import { Highlight } from '@/components/Highlight';
+import { Heading } from '@/components/Heading';
+import { Project } from '@/components/Project';
+import { Article } from '@/components/Article';
+
+interface HomeProps {
+    articles: {
+        nodes: {
+            frontmatter: ArticleType;
+        }[];
+    };
+    projects: {
+        nodes: {
+            frontmatter: ProjectType;
+        }[];
+    };
 }
 
-// dynamically (lazy) loading PDFViewer component
-const DynamicPDFViewer = dynamic<any>(
-    () => import('@/components/PDFViewer').then((mod) => mod.PDFViewer),
-    {
-        ssr: false,
-    }
-);
-
-const IndexPage = ({ posts, projects }: IndexPageProps) => {
-    const [selectedPost, setSelectedPost] = useState<PostType>();
-    const [showPDF, setShowPDF] = useState(false);
-
-    const onPostSelect = (post: PostType) => {
-        setShowPDF(true);
-        setSelectedPost(post);
-    };
-    const onPDFClose = () => {
-        setShowPDF(false);
-        setSelectedPost(undefined);
-    };
-
+const Home = ({
+    data: {
+        articles: { nodes: articles },
+        projects: { nodes: projects },
+    },
+}: PageProps<HomeProps>) => {
     return (
-        <Fragment>
-            <SEO title="Home" />
+        <>
+            <Layout path="/">
+                <SEO title="Home" />
 
-            <Highlight />
+                <Highlight />
 
-            {/* About */}
-            <Heading icon="user" title="About" />
-            <ul className="list-disc list-inside mt-3 mb-10">
-                <li>
-                    Currently working as full stack web developer at{' '}
-                    <NavLink className="link" link={links.lanetTeam} type="external">
-                        LaNet Team Software Solutions
-                    </NavLink>
-                    . Crafting beautiful websites and building features that solves users problems.
-                </li>
-                <li>
-                    Studied Master of Science in Information Technology from{' '}
-                    <NavLink className="link" link={links.jpdawer} type="external">
-                        J.P.Dawer Insitute of Communication and Technology
-                    </NavLink>
-                    .
-                </li>
-            </ul>
+                {/* About */}
+                <Heading icon="user" title="About" />
+                <ul className="list-disc list-inside mt-3 mb-10">
+                    <li>
+                        Currently working as full stack web developer at{' '}
+                        <NavLink className="link" link={links.lanetTeam} type="external">
+                            LaNet Team Software Solutions
+                        </NavLink>
+                        . Where I build accessible, performant and scalable web applications using
+                        JavaScript and TypeScript.
+                    </li>
+                    <li>
+                        Studied Master of Science in Information Technology from{' '}
+                        <NavLink className="link" link={links.jpdawer} type="external">
+                            J.P.Dawer Insitute of Communication and Technology
+                        </NavLink>
+                        .
+                    </li>
+                </ul>
 
-            {/* Projects */}
-            <Heading icon="thunder" title="Projects" />
-            <div className="space-y-1 mt-3 mb-10">
-                {projects.map((project) => (
-                    <Project key={project.id} project={project} />
-                ))}
-            </div>
+                {/* Projects */}
+                <Heading icon="thunder" title="Projects" />
+                <div className="space-y-1 mt-3 mb-10 flex flex-wrap">
+                    {projects.map((project, i) => (
+                        <Project key={i} project={project.frontmatter} />
+                    ))}
+                </div>
 
-            {/* Writings */}
-            <Heading icon="linkedIn" title="LinkedIn Posts" />
-            <div className="space-y-1 mt-3 mb-10 flex flex-wrap">
-                {posts.map((post) => (
-                    <Post key={post.id} post={post} onClick={onPostSelect} />
-                ))}
-            </div>
-
-            <Backdrop show={showPDF} onClose={onPDFClose} className="bg-gray-400 opacity-80">
-                <DynamicPDFViewer pdfUrl={selectedPost?.fileUrl} />
-            </Backdrop>
-        </Fragment>
+                {/* Articles */}
+                <Heading
+                    icon="writings"
+                    title="Recent Articles"
+                    variant="description"
+                    className="mt-10"
+                    description="Recent written articles"
+                />
+                <div className="mx-auto space-y-2 mt-3 mb-10">
+                    {articles.map((article, i) => (
+                        <Article article={article.frontmatter} key={i} />
+                    ))}
+                </div>
+            </Layout>
+        </>
     );
 };
 
-export const getServerSideProps: GetServerSideProps<IndexPageProps> = async () => {
-    const postsData = await getPosts(3);
-    const projects = await getProjects(3);
-    return {
-        props: {
-            posts: postsData.posts,
-            projects,
-        },
-    };
-};
+export default Home;
 
-export default IndexPage;
+export const pageQuery = graphql`
+    query {
+        projects: allMarkdownRemark(
+            filter: { frontmatter: { type: { eq: "projects" } } }
+            sort: { order: DESC, fields: frontmatter___date }
+            limit: 3
+        ) {
+            nodes {
+                frontmatter {
+                    description
+                    date(fromNow: true)
+                    heading
+                    tags
+                    title
+                    url
+                }
+            }
+        }
+        articles: allMarkdownRemark(
+            filter: { frontmatter: { type: { eq: "articles" } } }
+            sort: { order: DESC, fields: frontmatter___date }
+            limit: 3
+        ) {
+            nodes {
+                frontmatter {
+                    description
+                    date(fromNow: true)
+                    heading
+                    tags
+                    title
+                    url
+                }
+            }
+        }
+    }
+`;

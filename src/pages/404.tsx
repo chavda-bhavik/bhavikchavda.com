@@ -1,9 +1,13 @@
-import { Fragment } from 'react';
-import { Blob } from '@/components/Highlight';
+import React from 'react';
 
-function NotFoundPage() {
+import { SEO } from '@/components/SEO';
+import { Blob } from '@/components/Highlight';
+import { Layout } from '@/components/Layout';
+
+const NotFoundPage = () => {
     return (
-        <Fragment>
+        <Layout path="/404">
+            <SEO title="404: Page Not Foud" />
             <div className="flex justify-center">
                 <div className="absolute">
                     <Blob />
@@ -13,10 +17,10 @@ function NotFoundPage() {
                 </h1>
             </div>
             <p className="mt-24 text-2xl font-medium text-center lg:mt-36 text-fore-secondary">
-                Page not found. The page you’re looking for does not exist.
+                Page not found. The page you're looking for does not exist.
             </p>
-        </Fragment>
+        </Layout>
     );
-}
+};
 
 export default NotFoundPage;
