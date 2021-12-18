@@ -34,8 +34,6 @@ module.exports = {
                 short_name: `Bhavik Chavda`,
                 start_url: `/`,
                 background_color: `#ffffff`,
-                // This will impact how browsers show your PWA/website
-                // https://css-tricks.com/meta-theme-color-and-trickery/
                 theme_color: `#344B47`,
                 display: `standalone`,
                 icon: `src/images/header-avatar.png`, // This path is relative to the root of the site.
@@ -65,5 +63,6 @@ module.exports = {
                 },
             },
         },
+        `gatsby-plugin-webpack-bundle-analyser-v2`,
     ],
 };

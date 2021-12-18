@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import { Document, Page, pdfjs } from 'react-pdf/dist/esm/entry.webpack';
 import classNames from 'classnames';
 
 import { Icon } from '../Icon';

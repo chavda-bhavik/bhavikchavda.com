@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 
 import { links } from '@/config/constants';
-import { PostType, ProjectType } from '@/interfaces';
+import { ArticleType, ProjectType } from '@/interfaces';
 
-import { Loader } from '@/components/Loader';
-import { Backdrop } from '@/components/Backdrop';
 import { SEO } from '@/components/SEO';
 import { Layout } from '@/components/Layout';
-import { Post } from '@/components/Post';
 import { NavLink } from '@/components/NavLink';
 import { Highlight } from '@/components/Highlight';
 import { Heading } from '@/components/Heading';
 import { Project } from '@/components/Project';
+import { Article } from '@/components/Article';
 
 interface HomeProps {
-    posts: {
+    articles: {
         nodes: {
-            frontmatter: PostType;
+            frontmatter: ArticleType;
         }[];
     };
     projects: {
@@ -27,16 +25,12 @@ interface HomeProps {
     };
 }
 
-const LazyPDFViewer = React.lazy(() => import('@/components/PDFViewer'));
-
-const Home = (props: PageProps<HomeProps>) => {
-    const isSSR = typeof window === 'undefined';
-    const [selectedPost, setSelectedPost] = useState<PostType>();
-
-    const onPostSelect = (post: PostType) => {
-        setSelectedPost(post);
-    };
-
+const Home = ({
+    data: {
+        articles: { nodes: articles },
+        projects: { nodes: projects },
+    },
+}: PageProps<HomeProps>) => {
     return (
         <>
             <Layout path="/">
@@ -67,30 +61,25 @@ const Home = (props: PageProps<HomeProps>) => {
                 {/* Projects */}
                 <Heading icon="thunder" title="Projects" />
                 <div className="space-y-1 mt-3 mb-10 flex flex-wrap">
-                    {props.data.projects.nodes.map((project, i) => (
+                    {projects.map((project, i) => (
                         <Project key={i} project={project.frontmatter} />
                     ))}
                 </div>
 
-                {/* Writings */}
-                <Heading icon="linkedIn" title="LinkedIn Posts" />
-                <div className="space-y-1 mt-3 mb-10 flex flex-wrap">
-                    {props.data.posts.nodes.map((post, i) => (
-                        <Post key={i} post={post.frontmatter} onClick={onPostSelect} />
+                {/* Articles */}
+                <Heading
+                    icon="writings"
+                    title="Recent Articles"
+                    variant="description"
+                    className="mt-10"
+                    description="Recent written articles"
+                />
+                <div className="mx-auto space-y-2 mt-3 mb-10">
+                    {articles.map((article, i) => (
+                        <Article article={article.frontmatter} key={i} />
                     ))}
                 </div>
             </Layout>
-            {!isSSR && (
-                <React.Suspense fallback={<Loader />}>
-                    <Backdrop
-                        show={selectedPost?.url ? true : false}
-                        onClose={() => setSelectedPost(undefined)}
-                        className="bg-gray-900 opacity-30"
-                    >
-                        <LazyPDFViewer pdfUrl={selectedPost?.url} />
-                    </Backdrop>
-                </React.Suspense>
-            )}
         </>
     );
 };
@@ -99,14 +88,13 @@ export default Home;
 
 export const pageQuery = graphql`
     query {
-        posts: allMarkdownRemark(
-            filter: { frontmatter: { type: { eq: "posts" } } }
+        projects: allMarkdownRemark(
+            filter: { frontmatter: { type: { eq: "projects" } } }
             sort: { order: DESC, fields: frontmatter___date }
             limit: 3
         ) {
             nodes {
                 frontmatter {
-                    category
                     description
                     date(fromNow: true)
                     heading
@@ -116,8 +104,8 @@ export const pageQuery = graphql`
                 }
             }
         }
-        projects: allMarkdownRemark(
-            filter: { frontmatter: { type: { eq: "projects" } } }
+        articles: allMarkdownRemark(
+            filter: { frontmatter: { type: { eq: "articles" } } }
             sort: { order: DESC, fields: frontmatter___date }
             limit: 3
         ) {

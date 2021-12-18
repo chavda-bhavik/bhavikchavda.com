@@ -47,6 +47,9 @@ const Writings = ({
             setPostsList(newPosts);
             setHasMore(newPostsPointer < posts.length);
             setPostsPointer(newPostsPointer);
+            document.querySelector('#posts').scrollIntoView({
+                behavior: 'smooth',
+            });
         }
     };
 
@@ -67,8 +70,8 @@ const Writings = ({
                     className="mt-7 mb-5"
                     description="Recent Posts on LinkedIn"
                 />
-                <section className="text-gray-600">
-                    <div className="container mx-auto">
+                <section className="text-gray-600" id="posts">
+                    <div className="container mx-auto ">
                         <div className="flex flex-wrap">
                             {postsList.map((post, i) => (
                                 <Post post={post.frontmatter} key={i} onClick={onPostSelect} />

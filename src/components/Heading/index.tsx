@@ -4,6 +4,7 @@ import { Icon } from '@/components/Icon';
 
 interface HeadingProps {
     icon: IconsType;
+    id?: string;
     title?: string;
     className?: string;
     variant?: 'heading' | 'description';
@@ -12,6 +13,7 @@ interface HeadingProps {
 
 export const Heading: React.FC<HeadingProps> = ({
     icon,
+    id,
     title,
     className,
     description,
@@ -24,7 +26,9 @@ export const Heading: React.FC<HeadingProps> = ({
         <div className={`px-1 py-2 ${className}`}>
             {iconContent}
             {title && (
-                <h2 className="text-2xl ml-1 mt-2 font-bold uppercase tracking-wide">{title}</h2>
+                <h2 className="text-2xl ml-1 mt-2 font-bold uppercase tracking-wide" id={id}>
+                    {title}
+                </h2>
             )}
             {description && <h3 className="text-lg text-gray-800 ml-1">{description}</h3>}
         </div>
@@ -32,7 +36,11 @@ export const Heading: React.FC<HeadingProps> = ({
     let headingContent = (
         <div className={`flex flex-row items-center px-1 py-2 ${className}`}>
             {iconContent}
-            {title && <h2 className="text-xl font-medium uppercase tracking-wide">{title}</h2>}
+            {title && (
+                <h2 className="text-xl font-medium uppercase tracking-wide" id={id}>
+                    {title}
+                </h2>
+            )}
         </div>
     );
     return variant === 'heading' ? headingContent : descriptionContent;
