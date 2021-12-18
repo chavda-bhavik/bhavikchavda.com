@@ -10,6 +10,7 @@ export const SEO = ({ description, lang, meta, title }) => {
                     siteMetadata {
                         title
                         description
+                        metaImage
                         social {
                             twitter
                         }
@@ -21,6 +22,7 @@ export const SEO = ({ description, lang, meta, title }) => {
 
     const metaDescription = description || site.siteMetadata.description;
     const defaultTitle = site.siteMetadata?.title;
+    const metaImage = site.siteMetadata?.metaImage;
 
     return (
         <Helmet
@@ -47,6 +49,10 @@ export const SEO = ({ description, lang, meta, title }) => {
                     content: `website`,
                 },
                 {
+                    name: 'og:image',
+                    content: metaImage,
+                },
+                {
                     name: `twitter:card`,
                     content: `summary`,
                 },
@@ -61,6 +67,10 @@ export const SEO = ({ description, lang, meta, title }) => {
                 {
                     name: `twitter:description`,
                     content: metaDescription,
+                },
+                {
+                    name: 'twitter:image',
+                    content: metaImage,
                 },
             ].concat(meta)}
         />

@@ -7,6 +7,7 @@ module.exports = {
         },
         description: `Bhavik Chavda is a Full Stack Web Developer from India who specializes in building web applications using JavaScript, TypeScrpt, React, Node.js, Express, and GraphQL.`,
         siteUrl: `https://www.bhavikchavda.com`,
+        metaImage: '/og/default.png',
         social: {
             twitter: `chavdabhavik7`,
             linkedin: `chavdabhavik7`,
