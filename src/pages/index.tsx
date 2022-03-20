@@ -89,7 +89,7 @@ export default Home;
 export const pageQuery = graphql`
     query {
         projects: allMarkdownRemark(
-            filter: { frontmatter: { type: { eq: "projects" } } }
+            filter: { frontmatter: { type: { eq: "projects" }, show: { eq: true } } }
             sort: { order: DESC, fields: frontmatter___date }
             limit: 3
         ) {

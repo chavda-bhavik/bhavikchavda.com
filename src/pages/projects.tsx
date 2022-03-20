@@ -18,13 +18,16 @@ interface ProjectsProps {
 const Projects = ({ data }: PageProps<ProjectsProps>): ReactNode => {
     return (
         <Layout path="/projects">
-            <SEO title="Projects" description="Hobby projects created by bhavik chavda" />
+            <SEO
+                title="Projects"
+                description="Full Stack Hobby projects created by bhavik chavda"
+            />
             <Heading
                 icon="joyStick"
-                title="Projects"
+                title="Hobby Projects"
                 className="mt-7 mb-5"
                 variant="description"
-                description="Hobby Projects"
+                description="Full Stack Web Applications"
             />
             <div className="space-y-2">
                 {data.projects.nodes.map((project, i) => (
@@ -40,7 +43,7 @@ export default Projects;
 export const pageQuery = graphql`
     query {
         projects: allMarkdownRemark(
-            filter: { frontmatter: { type: { eq: "projects" } } }
+            filter: { frontmatter: { type: { eq: "projects" }, show: { eq: true } } }
             sort: { order: DESC, fields: frontmatter___date }
         ) {
             nodes {
