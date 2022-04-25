@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({ path = '/' }) => {
                                         'border-transparent': path !== menu.link,
                                     }
                                 )}
-                                type="internal"
+                                type={menu.external ? 'external' : "internal"}
                                 link={menu.link}
                                 title={menu.title}
                                 key={menu.title}
@@ -75,6 +75,7 @@ export const Header: React.FC<HeaderProps> = ({ path = '/' }) => {
                                             'border-transparent': path !== menu.link,
                                         }
                                     )}
+                                    type={menu.external ? 'external' : "internal"}
                                     link={menu.link}
                                     title={menu.title}
                                     key={menu.title}

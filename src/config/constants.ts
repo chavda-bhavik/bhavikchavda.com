@@ -25,4 +25,9 @@ export const MenuItems = [
         title: 'About',
         link: '/about',
     },
+    {
+        title: 'Resume',
+        link: '/resume',
+        external: true,
+    },
 ];

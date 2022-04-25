@@ -15,6 +15,32 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
+exports.createPages = async ({ graphql, actions }) => {
+    const { createRedirect } = actions;
+
+    // fetch data from a collection which contains list of urls mapping for redirection
+    let response = await graphql(`
+        query redirects {
+            links: allMarkdownRemark(filter: { frontmatter: { type: { eq: "links" } } }) {
+                nodes {
+                    frontmatter {
+                        redirects {
+                            from
+                            to
+                            isPermanent
+                        }
+                    }
+                }
+            }
+        }
+    `);
+    if (Array.isArray(response.data.links.nodes[0].frontmatter.redirects)) {
+        response.data.links.nodes[0].frontmatter.redirects.forEach((path) => {
+            createRedirect({ fromPath: path.from, toPath: path.to, isPermanent: path.isPermanent });
+        });
+    }
+};
+
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
