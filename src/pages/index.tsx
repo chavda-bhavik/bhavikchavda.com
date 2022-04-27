@@ -60,7 +60,7 @@ const Home = ({
 
                 {/* Projects */}
                 <Heading icon="thunder" title="Projects" />
-                <div className="space-y-1 mt-3 mb-10 flex flex-wrap">
+                <div className="mt-3 mb-10 grid grid-cols-1 md:grid-cols-2 gap-2">
                     {projects.map((project, i) => (
                         <Project key={i} project={project.frontmatter} />
                     ))}
@@ -91,7 +91,7 @@ export const pageQuery = graphql`
         projects: allMarkdownRemark(
             filter: { frontmatter: { type: { eq: "projects" }, show: { eq: true } } }
             sort: { order: DESC, fields: frontmatter___date }
-            limit: 3
+            limit: 2
         ) {
             nodes {
                 frontmatter {
@@ -101,6 +101,8 @@ export const pageQuery = graphql`
                     tags
                     title
                     url
+                    githubUrl
+                    imageUrl
                 }
             }
         }

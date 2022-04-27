@@ -41,8 +41,14 @@
     .btn {
         @apply transition-all rounded-md cursor-pointer py-2 px-3 flex flex-row space-x-2;
     }
+    .btn-sm {
+        @apply transition-all rounded-md cursor-pointer py-1 px-2 flex flex-row space-x-2;
+    }
     .btn-primary {
         @apply bg-classy-dark border-transparent border-2 hover:border-classy-dark hover:bg-classy-light hover:text-classy-dark text-white disabled:text-classy-light disabled:bg-classy-dark;
+    }
+    .btn-secondary {
+        @apply bg-white text-classy-dark font-medium border-2 border-classy-dark hover:text-white hover:bg-classy-dark;
     }
 }
 

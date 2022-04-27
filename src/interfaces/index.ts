@@ -39,6 +39,7 @@ export type ProjectType = {
     githubUrl: string;
     date: string;
     tags: string[];
+    imageUrl: string;
 };
 
 export type ArticleType = {

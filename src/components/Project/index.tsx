@@ -1,8 +1,6 @@
 import React from 'react';
 
 import { ProjectType } from '@/interfaces';
-import { NavLink } from '@/components/NavLink';
-import { Tag } from '@/components/Tag';
 
 interface ProjectProps {
     project: ProjectType;
@@ -10,20 +8,14 @@ interface ProjectProps {
 
 export const Project: React.FC<ProjectProps> = ({ project }) => {
     return (
-        <NavLink
-            link={project.url}
-            type="external"
-            className="rounded-lg border-2 bg-classy-base hover:border-classy-dark transition-colors duration-200 cursor-pointer block w-full"
-        >
-            <div className="sm:pl-8 py-4 border-gray-800 text-center sm:text-left">
-                <h2 className="card-heading">{project.heading}</h2>
-                <p className="leading-relaxed text-lg mb-4">{project.description}</p>
-                <div>
-                    {project.tags.map((tag) => (
-                        <Tag text={tag} key={tag} />
-                    ))}
-                </div>
+        <div className="p-2 border-2 border-slate-200 rounded-lg bg-classy-base block w-full text-center">
+            <h2 className="card-heading">{project.heading}</h2>
+            <img src={project.imageUrl} alt="Pizzorder" className="w-1/2 h-1/3 mx-auto my-2 border-2 rounded-md border-slate-200" />
+            <div className='flex flex-row space-x-1 justify-center pb-3'>
+                <a href={project.githubUrl} className='btn-sm btn-secondary inline-block' target="_blank" rel="norefferer noopener">Source</a>
+                <a href={project.url} className='btn-sm btn-secondary inline-block' target="_blank" rel="norefferer noopener">Demo</a>
             </div>
-        </NavLink>
+            <p className="leading-snug text-base mb-4">{project.description}</p>
+        </div>
     );
 };

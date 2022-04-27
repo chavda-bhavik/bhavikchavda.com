@@ -29,7 +29,7 @@ const Projects = ({ data }: PageProps<ProjectsProps>): ReactNode => {
                 variant="description"
                 description="Full Stack Web Applications"
             />
-            <div className="space-y-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 {data.projects.nodes.map((project, i) => (
                     <Project project={project.frontmatter} key={i} />
                 ))}
@@ -54,6 +54,8 @@ export const pageQuery = graphql`
                     tags
                     title
                     url
+                    githubUrl
+                    imageUrl
                 }
             }
         }
