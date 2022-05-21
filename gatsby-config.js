@@ -61,7 +61,7 @@ module.exports = {
                     'base-uri': "'self'",
                     'prefetch-src': "'self'",
                     'connect-src':
-                        "'self' https://res.cloudinary.com https://vitals.vercel-insights.com", // posts pdf are hosted on cloudinary
+                        "'self' https://res.cloudinary.com https://vitals.vercel-insights.com https://vitals.vercel-analytics.com", // posts pdf are hosted on cloudinary
                 },
             },
         },
