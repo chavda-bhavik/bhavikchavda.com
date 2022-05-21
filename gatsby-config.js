@@ -60,11 +60,12 @@ module.exports = {
                     'font-src': "'self'",
                     'base-uri': "'self'",
                     'prefetch-src': "'self'",
-                    'connect-src': "'self' https://res.cloudinary.com", // posts pdf are hosted on cloudinary
+                    'connect-src':
+                        "'self' https://res.cloudinary.com https://vitals.vercel-insights.com", // posts pdf are hosted on cloudinary
                 },
             },
         },
         `gatsby-plugin-webpack-bundle-analyser-v2`,
-        `gatsby-plugin-client-side-redirect`
+        `gatsby-plugin-client-side-redirect`,
     ],
 };
