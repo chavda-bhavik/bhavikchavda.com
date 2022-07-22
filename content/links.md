@@ -2,6 +2,6 @@
 type: 'links'
 redirects:
     - from: '/resume'
-      to: 'https://drive.google.com/file/d/14sojJvuT6I_0Kt6tsQeNKaMaVllVMVxN/view?usp=sharing'
+      to: 'https://drive.google.com/file/d/1qpw7IPkZxTsWTsoprug3vy6ZmOm-eBqs/view?usp=sharing'
       isPermanent: false
 ---

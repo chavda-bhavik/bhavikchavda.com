@@ -4,6 +4,7 @@ export const links = {
     github: 'https://github.com/chavda-bhavik',
     mailto: 'mailto:bhavikvchavda@gmail.com',
     lanetTeam: 'http://lanetteam.com/',
+    knovator: 'https://www.knovator.com/',
     jpdawer: 'https://vnsguit.org/',
 };
 

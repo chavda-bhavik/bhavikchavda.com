@@ -15,7 +15,16 @@ const AboutPage = () => (
         <h2 className="about-title">About Me</h2>
         <ul className="list-disc list-inside">
             <li>
-                I&apos;m currently working as Software Developer in{' '}
+                I&apos;m currently working as Full-Stack Developer (<i>R&amp;D</i>) in{' '}
+                <NavLink
+                    className="link"
+                    link={links.knovator}
+                    type="external"
+                    title="Knovator Technologies"
+                >
+                    Knovator Technologies
+                </NavLink>
+                , a startup in the{' '}
                 <NavLink
                     className="link"
                     link={links.lanetTeam}
