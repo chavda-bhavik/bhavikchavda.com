@@ -10,7 +10,7 @@ interface ProjectProps {
 export const Project: React.FC<ProjectProps> = ({ project }) => {
     return (
         <div
-            className="relative h-96 flex items-end justify-start text-left  border-2 border-classy-maroon rounded-lg shadow-lg   bg-cover bg-no-repeat"
+            className="relative h-72 sm:h-80 md:h-96 flex items-end justify-start text-left  border-2 border-classy-maroon rounded-lg shadow-lg  bg-center bg-cover bg-no-repeat"
             style={{
                 backgroundImage: `url(${project.imageUrl})`,
             }}
