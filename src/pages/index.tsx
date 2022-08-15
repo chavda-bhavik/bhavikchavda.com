@@ -65,20 +65,14 @@ const Home = ({
 
                 {/* Projects */}
                 <Heading icon="thunder" title="Projects" />
-                <div className="mt-3 mb-10 grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div className="mt-3 mb-10 grid grid-cols-1 gap-y-2">
                     {projects.map((project, i) => (
                         <Project key={i} project={project.frontmatter} />
                     ))}
                 </div>
 
                 {/* Articles */}
-                <Heading
-                    icon="writings"
-                    title="Recent Articles"
-                    variant="description"
-                    className="mt-10"
-                    description="Recent written articles"
-                />
+                <Heading icon="writings" title="Recent Articles" className="mt-10" />
                 <div className="mx-auto space-y-2 mt-3 mb-10">
                     {articles.map((article, i) => (
                         <Article article={article.frontmatter} key={i} />
@@ -114,7 +108,7 @@ export const pageQuery = graphql`
         articles: allMarkdownRemark(
             filter: { frontmatter: { type: { eq: "articles" } } }
             sort: { order: DESC, fields: frontmatter___date }
-            limit: 3
+            limit: 2
         ) {
             nodes {
                 frontmatter {
