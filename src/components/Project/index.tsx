@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ProjectType } from '@/interfaces';
+import { Icon } from '@/components/Icon';
 
 interface ProjectProps {
     project: ProjectType;
@@ -8,14 +9,41 @@ interface ProjectProps {
 
 export const Project: React.FC<ProjectProps> = ({ project }) => {
     return (
-        <div className="p-2 border-2 border-slate-200 rounded-lg bg-classy-base block w-full text-center">
-            <h2 className="card-heading">{project.heading}</h2>
-            <img src={project.imageUrl} alt="Pizzorder" className="w-1/2 h-1/3 mx-auto my-2 border-2 rounded-md border-slate-200" />
-            <div className='flex flex-row space-x-1 justify-center pb-3'>
-                <a href={project.githubUrl} className='btn-sm btn-secondary inline-block' target="_blank" rel="norefferer noopener">Source</a>
-                <a href={project.url} className='btn-sm btn-secondary inline-block' target="_blank" rel="norefferer noopener">Demo</a>
-            </div>
-            <p className="leading-snug text-base mb-4">{project.description}</p>
+        <div
+            className="relative h-96 flex items-end justify-start text-left  border-2 border-classy-maroon rounded-lg shadow-lg   bg-cover bg-no-repeat"
+            style={{
+                backgroundImage: `url(${project.imageUrl})`,
+            }}
+        >
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900 rounded-b-lg"></div>
+            <main className="p-5 z-10">
+                <p className="text-xl tracking-tight font-medium leading-7 font-regular text-white">
+                    {project.heading}
+                </p>
+                <p className="text-md tracking-tight leading-5 font-regular text-white">
+                    {project.description}
+                </p>
+                <div className="flex flex-row space-x-1 mt-3">
+                    <a
+                        href={project.githubUrl}
+                        className="btn-sm btn-tertiary inline-block"
+                        target="_blank"
+                        rel="norefferer noopener"
+                        title="Github"
+                    >
+                        <Icon icon="code" size="sm" />
+                    </a>
+                    <a
+                        href={project.url}
+                        className="btn-sm btn-tertiary inline-block"
+                        target="_blank"
+                        rel="norefferer noopener"
+                        title="Live Demo"
+                    >
+                        <Icon icon="world" size="sm" />
+                    </a>
+                </div>
+            </main>
         </div>
     );
 };
