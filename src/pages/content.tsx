@@ -40,7 +40,7 @@ const Writings = ({
     const [hasMore, setHasMore] = useState(posts.length > postsLength);
     const [selectedPost, setSelectedPost] = useState<PostType>();
 
-    const loadNextPosts = () => {
+    const loadMore = () => {
         if (hasMore) {
             let newPostsPointer = postsPointer + postsLength;
             let newPosts = posts.slice(postsPointer, newPostsPointer);
@@ -80,12 +80,12 @@ const Writings = ({
                     </div>
                     {hasMore && (
                         <Button
-                            ariaLabel="Next Posts"
+                            ariaLabel="Load More Posts"
                             variant="primary"
                             className="mx-auto font-medium"
-                            onClick={loadNextPosts}
+                            onClick={loadMore}
                         >
-                            Next Posts
+                            Load More Posts
                         </Button>
                     )}
                 </section>

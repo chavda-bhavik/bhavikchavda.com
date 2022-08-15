@@ -42,17 +42,12 @@ const Home = ({
                 <Heading icon="user" title="About" />
                 <ul className="list-disc list-inside mt-3 mb-10">
                     <li>
-                        Currently working as Full-Stack Developer (<i>R&amp;D</i>) in{' '}
-                        <NavLink
-                            className="link"
-                            link={links.knovator}
-                            type="external"
-                            title="Knovator Technologies"
-                        >
-                            Knovator Technologies
+                        Currently working as full stack web developer at{' '}
+                        <NavLink className="link" link={links.lanetTeam} type="external">
+                            LaNet Team Software Solutions
                         </NavLink>
-                        . Where I perform research and build reusable components that team can
-                        easily integrate in project and speed up their development time.
+                        . Where I build accessible, performant and scalable web applications using
+                        JavaScript and TypeScript.
                     </li>
                     <li>
                         Studied Master of Science in Information Technology from{' '}
