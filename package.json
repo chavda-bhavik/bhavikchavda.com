@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "author": "bhavikchavda <bhavikvchavda@gmail.com>",
     "dependencies": {
-        "canvas": "^2.8.0",
+        "canvas": "^2.11.0",
         "classnames": "^2.3.1",
         "gatsby": "^5.0.0",
         "gatsby-plugin-client-side-redirect": "^1.1.0",
